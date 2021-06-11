@@ -1,5 +1,5 @@
 var config = {
-    style: 'mapbox://styles/franzindustries/cknpah4xc36pi17p1j5wb6ecr',
+    style: 'mapbox://styles/franzindustries/ckpsfp3fg0mpy17nj7du3mbv0',
     accessToken: 'pk.eyJ1IjoiZGFsdG9ud2IiLCJhIjoiOWdSSXFQSSJ9.HZyjh4g3TAAOAncwelv9Vw',
     showMarkers: false,
     markerColor: '#3FB1CE',
@@ -14,12 +14,12 @@ var config = {
             id: '02',
             alignment: 'left',
             hidden: false,
-            title: 'Climate Change and Deadly Conflict in Africa',
+            title: 'Chinese Economic Presence in Central and Eastern Europe',
             image: '',
             description: 'In Europe, China has sought to engage differentially with its regions, segmenting its approach towards Northern, Southern, and Central and Eastern Europe. China has set up the 17+1 Initiative, which includes all former Communist countries and Greece. The initiative focuses on transport and energy infrastructure.',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
+                center: [19.01, 45.49],
+                zoom: 4.65,
                 pitch: 0,
                 bearing: 0
             },
@@ -28,22 +28,37 @@ var config = {
             callback: '',
             onChapterEnter: [
                  {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
+                     layer: 'state_data',
+                     opacity: 1,
                      duration: 2000
                  },
                  {
-                   layer: 'country-label',
-                   opacity: 1,
-                   duration: 3000
+                     layer: 'serbia',
+                     opacity: 1,
+                     duration: 2000
+                 },
+                 {
+                     layer: 'cce_greece',
+                     opacity: 1,
+                     duration: 3000
+                 },
+                 {
+                     layer: 'cce_states',
+                     opacity: 1,
+                     duration: 3000
                  }
             ],
             onChapterExit: [
               {
-              layer: 'nigeria_federal',
-              opacity: 0,
-              duration: 4000
-            }
+                  layer: 'state_data',
+                  opacity: 0,
+                  duration: 2000
+              },
+              {
+                  layer: 'serbia',
+                  opacity: 0,
+                  duration: 2000
+              },
             ]
         },
         {
@@ -54,32 +69,19 @@ var config = {
             image: '',
             description: 'Since 2009, around USD 14 billion in Chinese funds have entered in the region in the form of grants, development loans, mergers and acquisition of domestic assets and concession agreements.',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
-                pitch: 0,
-                bearing: 0
+              center: [19.699919, 43.821952],
+              zoom: 4.55,
+              pitch: 51.50,
+              bearing: -28.80
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-                 {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
-                     duration: 2000
-                 },
-                 {
-                   layer: 'country-label',
-                   opacity: 1,
-                   duration: 3000
-                 }
+
             ],
             onChapterExit: [
-              {
-              layer: 'nigeria_federal',
-              opacity: 0,
-              duration: 4000
-            }
+
             ]
         },
         {
@@ -99,23 +101,10 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-                 {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
-                     duration: 2000
-                 },
-                 {
-                   layer: 'country-label',
-                   opacity: 1,
-                   duration: 3000
-                 }
+
             ],
             onChapterExit: [
-              {
-              layer: 'nigeria_federal',
-              opacity: 0,
-              duration: 4000
-            }
+
             ]
         },
         {
@@ -135,23 +124,10 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-                 {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
-                     duration: 2000
-                 },
-                 {
-                   layer: 'country-label',
-                   opacity: 1,
-                   duration: 3000
-                 }
+
             ],
             onChapterExit: [
-              {
-              layer: 'nigeria_federal',
-              opacity: 0,
-              duration: 4000
-            }
+
             ]
         },
         {
@@ -172,22 +148,17 @@ var config = {
             callback: '',
             onChapterEnter: [
                  {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
+                     layer: 'china_projects',
+                     opacity: 1,
                      duration: 2000
-                 },
-                 {
-                   layer: 'country-label',
-                   opacity: 1,
-                   duration: 3000
                  }
             ],
             onChapterExit: [
-              {
-              layer: 'nigeria_federal',
-              opacity: 0,
-              duration: 4000
-            }
+                {
+                    layer: 'china_projects',
+                    opacity: 0,
+                    duration: 2000
+                }
             ]
         },
         {
@@ -207,16 +178,7 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-                 {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
-                     duration: 2000
-                 },
-                 {
-                   layer: 'country-label',
-                   opacity: 1,
-                   duration: 3000
-                 }
+
             ],
             onChapterExit: [
               {
@@ -388,8 +350,8 @@ var config = {
             callback: '',
             onChapterEnter: [
                  {
-                     layer: 'nigeria_federal',
-                     opacity: 0.3,
+                     layer: 'satellite',
+                     opacity: 1,
                      duration: 2000
                  },
                  {
@@ -483,7 +445,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'Recommendations',
-            image: 'images/farmer_herder.jpg',
+            image: 'images/china_ceec.jpeg',
             description: 'CSD’s recent report on Chinese Economic Influence in Central and Eastern Europe calls for: <ul><li>More targeted EU and US funding instruments for large-scale economic development projects,</li><li>The implementation of EU-wide governance standards for Chinese investments,</li><li>The inclusion of the Western Balkans in the EU rule of law mechanism and an enhanced role of the energy community.</li><li>You can read more here</li></ul>',
             location: {
               center: [21.7241853, 45.3757894],
