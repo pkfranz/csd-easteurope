@@ -1,5 +1,5 @@
 var config = {
-    style: 'mapbox://styles/franzindustries/ckpvvrrjm4pfz18mu6wq9htc6',
+    style: 'mapbox://styles/franzindustries/ckpw88z8703zy18mni11gw7t9',
     accessToken: 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q',
     showMarkers: false,
     markerColor: '#3FB1CE',
@@ -70,7 +70,7 @@ var config = {
             description: 'Since 2009, around USD 14 billion in Chinese funds have entered in the region in the form of grants, development loans, mergers and acquisition of domestic assets and concession agreements. This height graph shows the total value of these investments for FY 2009.',
             location: {
               center: [19.699919, 43.821952],
-              zoom: 4.55,
+              zoom: 5,
               pitch: 51.50,
               bearing: -28.80
             },
@@ -101,7 +101,7 @@ var config = {
             description: 'Now here is the total amount of investment for 2019.',
             location: {
               center: [19.699919, 43.821952],
-              zoom: 4.55,
+              zoom: 5,
               pitch: 51.50,
               bearing: -28.80
             },
@@ -132,7 +132,7 @@ var config = {
             description: 'The average bilateral trade deficit of the CEE countries with China has remained largely stable &dash; increasing from 2.4% of GDP in 2009 to 3.3% in 2019. But in some countries, such as Czechia, the trade exposure to China has doubled to close to 6% of GDP. A notable rise in the trade dependence on China is clearly visible also in most Western Balkan countries, which could be related to the growing imports of goods that Chinese companies have been using in the implementation of large infrastructure projects. Balance of payments vulnerabilities can be leveraged by China to impose political pressure on governments to change their foreign policy priorities or give up control over strategic assets.',
             location: {
               center: [19.699919, 43.821952],
-              zoom: 4.55,
+              zoom: 5,
               pitch: 51.50,
               bearing: -28.80
             },
@@ -163,7 +163,7 @@ var config = {
             description: 'Here is the share of trade per country in 2019.',
             location: {
               center: [19.699919, 43.821952],
-              zoom: 4.55,
+              zoom: 5,
               pitch: 51.50,
               bearing: -28.80
             },
@@ -187,11 +187,11 @@ var config = {
         },
         {
             id: '05',
-            alignment: 'left',
+            alignment: 'full',
             hidden: false,
             title: 'China filling the gap for funding infrastructural and large-scale energy projects in CEE',
             image: '',
-            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development could be worth more than USD 51.5 billion.',
+            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development could be worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/index.html"></iframe>"',
             location: {
                 center: [21.7241853, 45.3757894],
                 zoom: 3.5,
@@ -204,6 +204,11 @@ var config = {
             onChapterEnter: [
               {
                   layer: 'state_data',
+                  opacity: 1,
+                  duration: 2000
+              },
+              {
+                  layer: 'serbia',
                   opacity: 1,
                   duration: 2000
               }
@@ -220,8 +225,8 @@ var config = {
             image: '',
             description: 'Chinese investments in CEE have been focused in a few key sectors &dash; transportation, energy, manufacturing, and telecommunications. Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world. Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans. The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
+                center: [17.950513, 45.302615],
+                zoom: 5,
                 pitch: 0,
                 bearing: 0
             },
@@ -240,6 +245,16 @@ var config = {
                     layer: 'china_projects',
                     opacity: 0,
                     duration: 2000
+                },
+                {
+                    layer: 'state_data',
+                    opacity: 0,
+                    duration: 2000
+                },
+                {
+                    layer: 'serbia',
+                    opacity: 0,
+                    duration: 2000
                 }
             ]
         },
@@ -251,8 +266,8 @@ var config = {
             image: '',
             description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for the small regional economies. For some of the smaller economies like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
+                center: [20.937562, 42.065657],
+                zoom: 5,
                 pitch: 0,
                 bearing: 0
             },
@@ -261,13 +276,37 @@ var config = {
             callback: '',
             onChapterEnter: [
               {
-                  layer: 'state_data',
-                  opacity: 1,
+                  layer: 'csd_debt_gdp',
+                  opacity: .9,
                   duration: 2000
+              },
+              {
+                  layer: 'cce_greece',
+                  opacity: 1,
+                  duration: 3000
+              },
+              {
+                  layer: 'cce_states',
+                  opacity: 1,
+                  duration: 3000
               }
             ],
             onChapterExit: [
-
+              {
+                  layer: 'csd_debt_gdp',
+                  opacity: 0,
+                  duration: 2000
+              },
+              {
+                  layer: 'cce_greece',
+                  opacity: 0,
+                  duration: 3000
+              },
+              {
+                  layer: 'cce_states',
+                  opacity: 0,
+                  duration: 3000
+              }
             ]
         },
         {
@@ -323,10 +362,33 @@ var config = {
                   opacity: .75,
                   duration: 2000
               },
-
+              {
+                  layer: 'cce_greece',
+                  opacity: 1,
+                  duration: 3000
+              },
+              {
+                  layer: 'state_data',
+                  opacity: 1,
+                  duration: 2000
+              },
+              {
+                  layer: 'serbia',
+                  opacity: 1,
+                  duration: 2000
+              },
+              {
+                  layer: 'cce_states',
+                  opacity: 1,
+                  duration: 3000
+              }
             ],
             onChapterExit: [
-
+              {
+                  layer: '10_companies',
+                  opacity: 0,
+                  duration: 2000
+              }
             ]
         },
         {
@@ -346,11 +408,7 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-              {
-                  layer: 'state_data',
-                  opacity: 1,
-                  duration: 2000
-              }
+
             ],
             onChapterExit: [
 
@@ -376,6 +434,11 @@ var config = {
               {
                   layer: 'state_data',
                   opacity: 1,
+                  duration: 2000
+              },
+              {
+                  layer: 'satellite',
+                  opacity: 0,
                   duration: 2000
               }
             ],

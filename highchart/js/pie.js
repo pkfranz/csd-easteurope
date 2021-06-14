@@ -1,15 +1,30 @@
 Highcharts.setOptions({
   lang: {
     thousandsSep: ","
-  }
+  },
+    colors: [
+      '#00876c',
+      '#479871',
+      '#6fa878',
+      '#93b882',
+      '#b5c88f',
+      '#d6d8a0',
+      '#f6e8b5',
+      '#f0d096',
+      '#ecb67b',
+      '#e89b67',
+      '#e47f59',
+      '#dd6052',
+      '#d43d51'
+    ]
 });
 
 Highcharts.chart("container", {
   chart: {
     type: "pie",
     margin: [10, 0, 50, 0],
-    styledMode: true,
-    colorCount: 17
+  //  styledMode: true,
+  //  colorCount: 17
   },
   title: {
     text: ""
@@ -61,8 +76,7 @@ Highcharts.chart("container", {
 
   series: [
     {
-      name: "PRC Investments",
-      colorByPoint: true,
+      name: "Overview",
       data: [
         {
           name: "Infrastructure and Maritime Transport",
