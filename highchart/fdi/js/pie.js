@@ -35,7 +35,7 @@ Highcharts.chart("container", {
   credits: {
     href: false,
     text:
-      "Center for Defense of Democracy"
+      "Center for the Study of Democracy"
   },
   plotOptions: {
     pie: {

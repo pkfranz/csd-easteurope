@@ -1,8 +1,7 @@
 
 Highcharts.chart('container', {
     chart: {
-        type: 'bar',
-        height: 500
+        type: 'bar'
     },
     colors: ['#283B53', '#669DA1'],
     title: {
@@ -47,8 +46,7 @@ Highcharts.chart('container', {
     },
     credits: {
       enabled: true,
-      href: "http://journals.sagepub.com/doi/pdf/10.1177/2053168016658919",
-      text: "Allee & Lugg 2016 | CPTPP text | TPP text"
+      text: "Center for the Study of Democracy"
     },
     series: [{
         name: 'Projects',

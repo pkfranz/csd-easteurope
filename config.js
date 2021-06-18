@@ -223,7 +223,7 @@ var config = {
             hidden: false,
             title: 'China filling the gap for funding infrastructural and large-scale energy projects in CEE',
             image: '',
-            description: 'Most projects are still in permitting stages.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/completions/index.html"></iframe>"',
+            description: 'Most projects are still in permitting stages.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/completions/index.html"></iframe>',
             location: {
                 center: [21.7241853, 45.3757894],
                 zoom: 3.5,
