@@ -479,7 +479,7 @@ var config = {
             hidden: false,
             title: 'The Stanari Plant Today',
             image: '',
-            description: 'Here is the completed plant as of June 2021.',
+            description: 'Here is the completed plant as of June 2021. <video width="100%" height="240" controls><source src="images/stanari.mp4" type="video/mp4"></video>',
             location: {
                 center: [17.7854985, 44.7547679],
                 zoom: 13.5,
