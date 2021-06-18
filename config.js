@@ -191,7 +191,39 @@ var config = {
             hidden: false,
             title: 'China filling the gap for funding infrastructural and large-scale energy projects in CEE',
             image: '',
-            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development could be worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/index.html"></iframe>"',
+            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development could be worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/fdi/index.html"></iframe>"',
+            location: {
+                center: [21.7241853, 45.3757894],
+                zoom: 3.5,
+                pitch: 0,
+                bearing: 0
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [
+              {
+                  layer: 'state_data',
+                  opacity: 1,
+                  duration: 2000
+              },
+              {
+                  layer: 'serbia',
+                  opacity: 1,
+                  duration: 2000
+              }
+            ],
+            onChapterExit: [
+
+            ]
+        },
+        {
+            id: '05B',
+            alignment: 'full',
+            hidden: false,
+            title: 'China filling the gap for funding infrastructural and large-scale energy projects in CEE',
+            image: '',
+            description: 'Most projects are still in permitting stages.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/completions/index.html"></iframe>"',
             location: {
                 center: [21.7241853, 45.3757894],
                 zoom: 3.5,
@@ -219,11 +251,11 @@ var config = {
         },
         {
             id: '06',
-            alignment: 'left',
+            alignment: 'full',
             hidden: false,
             title: 'Chinese Projects are Unevenly Concentrated in the Western Balkans',
             image: '',
-            description: 'Chinese investments in CEE have been focused in a few key sectors &dash; transportation, energy, manufacturing, and telecommunications. Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world. Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans. The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.',
+            description: 'Chinese investments in CEE have been focused in a few key sectors &dash; transportation, energy, manufacturing, and telecommunications. Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world. Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans. The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.<br /><br /><iframe width="100%" height="500" frameborder="0" src="maps/projects.html"></iframe>',
             location: {
                 center: [17.950513, 45.302615],
                 zoom: 5,

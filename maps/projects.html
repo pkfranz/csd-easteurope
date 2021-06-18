@@ -1,0 +1,229 @@
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8"/>
+        <title>Kepler.gl embedded map</title>
+
+        <!--Uber Font-->
+        <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
+
+        <!--MapBox css-->
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
+
+        <!-— facebook open graph tags -->
+        <meta property="og:url" content="http://kepler.gl/" />
+        <meta property="og:title" content="Large-scale WebGL-powered Geospatial Data Visualization Tool" />
+        <meta property="og:description" content="Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets." />
+        <meta property="og:site_name" content="kepler.gl" />
+        <meta property="og:image" content="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/kepler.gl-meta-tag.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="800" />
+
+        <!-— twitter card tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@uber">
+        <meta name="twitter:creator" content="@uber">
+        <meta name="twitter:title" content="Large-scale WebGL-powered Geospatial Data Visualization Tool">
+        <meta name="twitter:description" content="Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets.">
+        <meta name="twitter:image" content="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/kepler.gl-meta-tag.png" />
+
+        <!-- Load React/Redux -->
+        <script src="https://unpkg.com/react@16.8.4/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/redux@3.7.2/dist/redux.js" crossorigin></script>
+        <script src="https://unpkg.com/react-redux@7.1.3/dist/react-redux.min.js" crossorigin></script>
+        <script src="https://unpkg.com/styled-components@4.1.3/dist/styled-components.min.js" crossorigin></script>
+
+        <!-- Load Kepler.gl -->
+        <script src="https://unpkg.com/kepler.gl@2.5.1/umd/keplergl.min.js" crossorigin></script>
+
+        <style type="text/css">
+          body {margin: 0; padding: 0; overflow: hidden;}
+        </style>
+
+        <!--MapBox token-->
+        <script>
+          /**
+           * Provide your MapBox Token
+           **/
+          const MAPBOX_TOKEN = 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q';
+          const WARNING_MESSAGE = 'Please Provide a Mapbox Token in order to use Kepler.gl. Edit this file and fill out MAPBOX_TOKEN with your access key';
+        </script>
+
+        <!-- GA: Delete this as you wish, However to pat ourselves on the back, we only track anonymous pageview to understand how many people are using kepler.gl. -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-64694404-19', {
+            'storage': 'none',
+            'clientId': localStorage.getItem('ga:clientId')
+          });
+          ga(function(tracker) {
+              localStorage.setItem('ga:clientId', tracker.get('clientId'));
+          });
+          ga('set', 'checkProtocolTask', null); // Disable file protocol checking.
+          ga('set', 'checkStorageTask', null); // Disable cookie storage checking.
+          ga('set', 'historyImportTask', null); // Disable history checking (requires reading from cookies).
+          ga('set', 'page', 'keplergl-html');
+          ga('send', 'pageview');
+        </script>
+      </head>
+      <body>
+        <!-- We will put our React component inside this div. -->
+        <div id="app">
+          <!-- Kepler.gl map will be placed here-->
+        </div>
+
+        <!-- Load our React component. -->
+        <script>
+          /* Validate Mapbox Token */
+          if ((MAPBOX_TOKEN || '') === '' || MAPBOX_TOKEN === 'PROVIDE_MAPBOX_TOKEN') {
+            alert(WARNING_MESSAGE);
+          }
+
+          /** STORE **/
+          const reducers = (function createReducers(redux, keplerGl) {
+            return redux.combineReducers({
+              // mount keplerGl reducer
+              keplerGl: keplerGl.keplerGlReducer.initialState({
+                uiState: {
+                  readOnly: true,
+                  currentModal: null
+                }
+              })
+            });
+          }(Redux, KeplerGl));
+
+          const middleWares = (function createMiddlewares(keplerGl) {
+            return keplerGl.enhanceReduxMiddleware([
+              // Add other middlewares here
+            ]);
+          }(KeplerGl));
+
+          const enhancers = (function craeteEnhancers(redux, middles) {
+            return redux.applyMiddleware(...middles);
+          }(Redux, middleWares));
+
+          const store = (function createStore(redux, enhancers) {
+            const initialState = {};
+
+            return redux.createStore(
+              reducers,
+              initialState,
+              redux.compose(enhancers)
+            );
+          }(Redux, enhancers));
+          /** END STORE **/
+
+          /** COMPONENTS **/
+          var KeplerElement = (function makeKeplerElement(react, keplerGl, mapboxToken) {
+            var LogoSvg = function LogoSvg() {
+              return react.createElement(
+                "div",
+                { className: "logo-container", style: {position: 'fixed', zIndex: 10000, padding: '4px'} },
+                  react.createElement(
+                    "svg",
+                    {
+                      className: "kepler_gl__logo",
+                      width: "107px",
+                      height: "21px",
+                      viewBox: "0 0 124 24"
+                    },
+                    react.createElement(
+                      "g",
+                      { transform: "translate(13.500000, 13.500000) rotate(45.000000) translate(-13.500000, -13.500000) translate(4.000000, 4.000000)" },
+                      react.createElement("rect", { x: "0", y: "6", transform: "matrix(2.535181e-06 1 -1 2.535181e-06 18.1107 6.0369)", fill: "#535C6C", width: "12.1", height: "12.1" }),
+                      react.createElement("rect", { x: "6", y: "0", transform: "matrix(2.535182e-06 1 -1 2.535182e-06 18.1107 -6.0369)", fill:"#1FBAD6", width: "12.1", height: "12.1" })
+                    ),
+                    react.createElement(
+                      "g",
+                      {},
+                      react.createElement("path", { fill:"#1FBAD6", d: "M39,8.7h2.2l-2.8,4.2l2.9,5.1H39l-2.4-4.2h-1.3V18h-2V5l2-0.1v7.3h1.3L39,8.7z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M42.4,13.3c0-1.5,0.4-2.7,1.1-3.5s1.8-1.2,3.1-1.2c1.3,0,2.2,0.4,2.8,1.1c0.6,0.7,0.9,1.8,0.9,3.3 c0,0.4,0,0.8,0,1.1h-5.8c0,1.6,0.8,2.4,2.4,2.4c1,0,2-0.2,2.9-0.6l0.2,1.7c-0.4,0.2-0.9,0.4-1.4,0.5s-1.1,0.2-1.7,0.2 c-1.5,0-2.6-0.4-3.3-1.2C42.8,16.1,42.4,14.9,42.4,13.3z M46.6,10.1c-0.7,0-1.2,0.2-1.5,0.5c-0.4,0.4-0.6,0.9-0.6,1.7h4 c0-0.8-0.2-1.4-0.5-1.7S47.2,10.1,46.6,10.1z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M57.1,18.2c-1,0-1.8-0.3-2.3-0.9l0,0l0,1.3v2.5h-2V8.7h1.5l0.3,0.9h0c0.3-0.3,0.7-0.6,1.2-0.7 c0.4-0.2,0.9-0.3,1.4-0.3c1.2,0,2.1,0.4,2.7,1.1c0.6,0.7,0.9,2,0.9,3.7c0,1.6-0.3,2.8-1,3.7C59.2,17.8,58.3,18.2,57.1,18.2z M56.7,10.3c-0.4,0-0.8,0.1-1.1,0.2c-0.3,0.2-0.6,0.4-0.8,0.7v4.3c0.2,0.3,0.4,0.5,0.7,0.7c0.3,0.2,0.7,0.3,1.1,0.3 c0.7,0,1.2-0.2,1.6-0.7c0.4-0.5,0.5-1.3,0.5-2.5c0-0.8-0.1-1.4-0.2-1.8s-0.4-0.7-0.7-0.9C57.6,10.4,57.2,10.3,56.7,10.3z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M63.2,16V5l2-0.1v10.8c0,0.3,0.1,0.5,0.2,0.6c0.1,0.1,0.3,0.2,0.6,0.2c0.3,0,0.6,0,0.9-0.1V18 c-0.4,0.1-1,0.2-1.6,0.2c-0.8,0-1.3-0.2-1.7-0.5S63.2,16.8,63.2,16z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M68.2,13.3c0-1.5,0.4-2.7,1.1-3.5c0.7-0.8,1.8-1.2,3.1-1.2c1.3,0,2.2,0.4,2.8,1.1c0.6,0.7,0.9,1.8,0.9,3.3 c0,0.4,0,0.8,0,1.1h-5.8c0,1.6,0.8,2.4,2.4,2.4c1,0,2-0.2,2.9-0.6l0.2,1.7c-0.4,0.2-0.9,0.4-1.4,0.5s-1.1,0.2-1.7,0.2 c-1.5,0-2.6-0.4-3.3-1.2C68.6,16.1,68.2,14.9,68.2,13.3z M72.4,10.1c-0.7,0-1.2,0.2-1.5,0.5c-0.4,0.4-0.6,0.9-0.6,1.7h4 c0-0.8-0.2-1.4-0.5-1.7S73,10.1,72.4,10.1z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M80.2,8.7l0.1,1.7h0c0.3-0.6,0.7-1.1,1.1-1.4c0.4-0.3,1-0.5,1.6-0.5c0.4,0,0.7,0,1,0.1l-0.1,2 c-0.3-0.1-0.7-0.2-1-0.2c-0.7,0-1.3,0.3-1.7,0.8c-0.4,0.5-0.7,1.2-0.7,2.1V18h-2V8.7H80.2z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M83.8,17c0-0.8,0.4-1.2,1.2-1.2c0.8,0,1.2,0.4,1.2,1.2c0,0.8-0.4,1.1-1.2,1.1C84.2,18.2,83.8,17.8,83.8,17z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M88.5,18.7c0-0.8,0.4-1.4,1.2-1.8c-0.6-0.3-0.9-0.8-0.9-1.5c0-0.7,0.4-1.2,1.1-1.6c-0.3-0.3-0.6-0.6-0.7-0.9 c-0.2-0.4-0.2-0.8-0.2-1.3c0-1,0.3-1.8,0.9-2.3c0.6-0.5,1.6-0.8,2.8-0.8c0.5,0,1,0,1.4,0.1c0.4,0.1,0.8,0.2,1.1,0.4l2.4-0.2v1.5 h-1.5c0.2,0.4,0.2,0.8,0.2,1.3c0,1-0.3,1.7-0.9,2.2s-1.5,0.8-2.7,0.8c-0.7,0-1.2-0.1-1.6-0.2c-0.1,0.1-0.2,0.2-0.3,0.3 c-0.1,0.1-0.1,0.2-0.1,0.4c0,0.2,0.1,0.3,0.2,0.4c0.1,0.1,0.3,0.2,0.6,0.2l2.7,0.2c1,0.1,1.7,0.3,2.2,0.6c0.5,0.3,0.8,0.9,0.8,1.7 c0,0.6-0.2,1.1-0.5,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.7,0.2-1.5,0.4-2.4,0.4c-1.3,0-2.3-0.2-3-0.6C88.8,20.1,88.5,19.5,88.5,18.7z M95.1,18.4c0-0.3-0.1-0.5-0.3-0.7s-0.6-0.2-1.1-0.3l-2.7-0.3c-0.2,0.1-0.4,0.3-0.5,0.5c-0.1,0.2-0.2,0.4-0.2,0.6 c0,0.4,0.2,0.8,0.5,1c0.4,0.2,1,0.3,1.8,0.3C94.2,19.5,95.1,19.2,95.1,18.4z M94.3,11.5c0-0.6-0.1-1-0.4-1.2 c-0.3-0.2-0.7-0.3-1.3-0.3c-0.7,0-1.1,0.1-1.4,0.3c-0.3,0.2-0.4,0.6-0.4,1.2s0.1,1,0.4,1.2c0.3,0.2,0.7,0.3,1.4,0.3 c0.6,0,1.1-0.1,1.3-0.4S94.3,12,94.3,11.5z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M99.4,16V5l2-0.1v10.8c0,0.3,0.1,0.5,0.2,0.6c0.1,0.1,0.3,0.2,0.6,0.2c0.3,0,0.6,0,0.9-0.1V18 c-0.4,0.1-1,0.2-1.6,0.2c-0.8,0-1.3-0.2-1.7-0.5S99.4,16.8,99.4,16z" })
+                    )
+                  )
+                );
+              };
+
+            return function App() {
+              var rootElm = react.useRef(null);
+              var _useState = react.useState({
+                width: window.innerWidth,
+                height: window.innerHeight
+              });
+              var windowDimension = _useState[0];
+              var setDimension = _useState[1];
+              react.useEffect(function sideEffect(){
+                function handleResize() {
+                  setDimension({width: window.innerWidth, height: window.innerHeight});
+                };
+                window.addEventListener('resize', handleResize);
+                return function() {window.removeEventListener('resize', handleResize);};
+              }, []);
+              return react.createElement(
+                'div',
+                {style: {position: 'absolute', left: 0, width: '100vw', height: '100vh'}},
+                LogoSvg(),
+                react.createElement(keplerGl.KeplerGl, {
+                  mapboxApiAccessToken: mapboxToken,
+                  id: "map",
+                  width: windowDimension.width,
+                  height: windowDimension.height
+                })
+              )
+            }
+          }(React, KeplerGl, MAPBOX_TOKEN));
+
+          const app = (function createReactReduxProvider(react, reactRedux, KeplerElement) {
+            return react.createElement(
+              reactRedux.Provider,
+              {store},
+              react.createElement(KeplerElement, null)
+            )
+          }(React, ReactRedux, KeplerElement));
+          /** END COMPONENTS **/
+
+          /** Render **/
+          (function render(react, reactDOM, app) {
+            reactDOM.render(app, document.getElementById('app'));
+          }(React, ReactDOM, app));
+        </script>
+        <!-- The next script will show how to interact directly with Kepler map store -->
+        <script>
+          /**
+           * Customize map.
+           * In the following section you can use the store object to dispatch Kepler.gl actions
+           * to add new data and customize behavior
+           */
+          (function customize(keplerGl, store) {
+            const datasets = [{"version":"v1","data":{"id":"93nbrvcm","label":"chinese_ceec_projects.csv","color":[143,47,191],"allData":[["Stanari TPP 300MW",44.75357545,17.7927661,"Bosnia and Herzegovina (RS)","Completed (2016)","Energy",550],["Kozjak HE 80MW",41.88057723,21.19182797,"North Macedonia","Completed (2004)","Energy",170],["Kotor and 21 May ships",42.42472739,18.77083362,"Montenegro","Completed (2012)","Infrastructure and Maritime Transport",41],["Zemun-Borca Bridge",44.86755869,20.38368403,"Serbia","Completed (2014)","Infrastructure and Maritime Transport",224],["Kostolac Phase I (de-SO2)",44.72424795,21.173012,"Serbia","Completed (2016)","Energy",302],["Bankers Petroleum (Patos-Marinza, Kucova oilfield, Block F)",40.7374751,19.65118425,"Albania","Completed (2016)","Energy",509],["The Mozura Wind Park",41.97529466,19.20833338,"Montenegro","Completed (2019)","Energy",90],["Piraeus port",37.94106206,23.63359086,"Greece","Completed (2016)","Infrastructure and Maritime Transport",350],["Nesko Metals Copper Mine (50%stake)",42.01674109,19.92900371,"Albania","Completed (2014)","Energy",58],["Renewal of Ship Fleet",42.42980226,19.23894429,"Montenegro","Completed (2014)","Infrastructure and Maritime Transport",100],["Refurbishment of Deva-Mintia TPP",45.91546515,22.82790005,"Romania","Completed","Energy",237],["Zelezara Smederevo steel mill",44.60518063,20.97063612,"Serbia","Completed (2016)","Energy",46],["Tirana International Airport Operator TIA",41.41770035,19.71555926,"Albania","Completed (2016)","Infrastructure and Maritime Transport",90],["Kolasin-Kos Railway Rehabilitation",42.7447667,19.49849209,"Montenegro","Completed (2017)","Infrastructure and Maritime Transport",7],["RTB Bor Mining company (63% stake)",44.07631059,22.10835295,"Serbia","Completed (2018)","Energy",350],["Investment in Gaženica port in Zadar",44.09322665,15.25855365,"Croatia","Completed (2017)","Infrastructure and Maritime Transport",28],["Bluetech 45 project (vessels and bulk carriers)",43.20020588,27.91874902,"Bulgaria","Completed (2018)","Infrastructure and Maritime Transport",84],["Peljesac Bridge",42.92332021,17.52675204,"Croatia","Under Construction","Infrastructure and Maritime Transport",526],["Senj Windfarm 156 MW",44.98912066,14.90378999,"Croatia","Under Construction","Energy",180],["Florina II TPP 440MW",40.7743569,21.41998025,"Greece","Under Construction","Energy",750],["Bar-Boljare Highway: Sec 3",42.97182517,19.6020662,"Montenegro","Under Construction","Infrastructure and Maritime Transport",810],["Ohrid-Kicevo Highway",41.31615722,20.787966,"North Macedonia","Under Construction","Infrastructure and Maritime Transport",580],["Kostolac II TPP 350 MW",44.72392553,21.17076482,"Serbia","Under Construction","Energy",629],["E736 Highway: Surcin Preljina",44.81866028,20.31431734,"Serbia","Under Construction","Infrastructure and Maritime Transport",1085],["Belgrade Bypass B",44.86827559,20.43089695,"Serbia","Under Construction","Infrastructure and Maritime Transport",207],["Belgrade-Budapest Rail (RS)",44.79409025,20.45090769,"Serbia","Under Construction","Infrastructure and Maritime Transport",1766],["Chaplina section of Pan-European 5C Corridor",45.14496707,17.25208796,"Bosnia and Herzegovina (RS)","Under Construction","Infrastructure and Maritime Transport",100],["Dabar HE 160MW",42.82538373,18.07626917,"Bosnia and Herzegovina (RS)","Under Construction","Energy",190],["Ulog HPP 35MW",43.39607308,18.31146195,"Bosnia and Herzegovina (RS)","Under Construction","Energy",67],["Loznica Natural Gas Power Plant",44.53389208,19.22321897,"Serbia","Under Construction","Energy",230],["Industrial Park in Belgrade (Borca)",44.87717528,20.46607291,"Serbia","Under Construction","Infrastructure and Maritime Transport",300],["TE-TO Pančevo",44.831041,20.68034082,"Serbia","Under Construction","Infrastructure and Maritime Transport",180],["Copper Refining Plant",44.07577173,22.10826704,"Serbia","Under Construction","Energy",65],["E763 Preljina-Pozega",43.91977028,20.42658465,"Serbia","Planning and Permit Stage","Infrastructure and Maritime Transport",450],["Banja Luka - Prijedor highway",44.9819831,16.71695983,"Bosnia and Herzegovina (RS)","Planning and Permit Stage","Infrastructure and Maritime Transport",277],["Gacko 2 TPP 300 MW",43.16802666,18.5368226,"Bosnia and Herzegovina (RS)","Planning and Permit Stage","Energy",600],["Tuzla 7 TPP 450MW",44.52225784,18.6052214,"Bosnia and Herzegovina (FBiH)","Planning and Permit Stage","Energy",722],["Banovici TPP 350MW",44.40450191,18.44634391,"Bosnia and Herzegovina (FBiH)","Planning and Permit Stage","Energy",305],["Budapest-Belgrade rail (HU)",null,null,"Hungary","Planning and Permit Stage","Infrastructure and Maritime Transport",2320],["Varna port",43.19721835,27.91465164,"Bulgaria","Planning and Permit Stage","Infrastructure and Maritime Transport",120],["Reconstruction of TPP Pljevlja",43.35781932,19.35310414,"Montenegro","Planning and Permit Stage","Energy",54],["Kolubara B Power Station (coal)",44.50509854,20.23381264,"Serbia","Planning and Permit Stage","Energy",385],["Obrenovac-New Belgrade heating pipeline",44.65752303,20.19481217,"Serbia","Planning and Permit Stage","Energy",190],["MINOS 50MW CSP Project",35.05944773,25.53804837,"Greece","Planning and Permit Stage","Energy",42],["Banja Luka - Split highway I",44.77173232,17.1859003,"Bosnia and Herzegovina (RS)","Planning and Permit Stage","Infrastructure and Maritime Transport",600],["Kamengrad TPP 2x215MW",44.79117397,16.56987492,"Bosnia and Herzegovina (FBiH)","Planning and Permit Stage","Energy",521],["Tura GPP 40MW",null,null,"Hungary","Planning and Permit Stage","Energy",140],["Bar-Boljare Highway",43.07714078,19.9896042,"Montenegro","Planning and Permit Stage","Infrastructure and Maritime Transport",2100],["Rovinari TPP 600MW",44.90930806,23.1329153,"Romania","Planning and Permit Stage","Energy",847],["Belgrade Port and Free Zone",44.82440618,20.47659265,"Serbia","Planning and Permit Stage","Infrastructure and Maritime Transport",343],["Belgrade bypass C",44.72694574,20.47372729,"Serbia","Planning and Permit Stage","Infrastructure and Maritime Transport",500],["E763 Pozega-Boljare",43.84238411,20.03331223,"Serbia","Planning and Permit Stage","Infrastructure and Maritime Transport",1320],["Waste water management",44.2675386,20.77737544,"Serbia","Planning and Permit Stage","Waste management",250],["Adriatic-Ionian Highway (Blue Corridor)",44.96649913,15.06721993,"Montenegro","Planning and Permit Stage","Infrastructure and Maritime Transport",null],["Wind Farm Near Tomislavgrad",43.71801159,17.2262626,"Bosnia and Herzegovina","Planning and Permit Stage","Energy",150],["HPPs on Moraca and Komarnica rivers",42.46191302,19.26075838,"Montenegro","Planning and Permit Stage","Energy",530],["Vukosavlje-Doboj Highway project",44.73396054,18.0790216,"Bosnia and Herzegovina (RS)","Planning and Permit Stage","Infrastructure and Maritime Transport",350],["Modernisation of Rijeka – Zagreb railway",45.35216782,14.3914527,"Croatia","Planning and Permit Stage","Infrastructure and Maritime Transport",11],["Mediterranean Intermodal Transport Corridor",45.80158901,15.9471578,"Croatia","Planning and Permit Stage","Infrastructure and Maritime Transport",null],["Belgrade Metro Network",44.7925884,20.47540678,"Serbia","Planning and Permit Stage","Infrastructure and Maritime Transport",4500],["Plant for electric buses",42.70543927,23.31157724,"Bulgaria","Planning and Permit Stage","Infrastructure and Maritime Transport",25],["Kovin Energy Complex",44.73932038,20.97700417,"Serbia","Planning and Permit Stage","Energy",1150],["Buk-Bijela HPP 94MW",43.42754945,18.76480751,"Bosnia and Herzegovina (RS)","Delayed/Cancelled","Energy",195],["Mrsovo HPP 37MW",43.652813,19.328324,"Bosnia and Herzegovina (RS)","Delayed/Cancelled","Energy",96],["Ugljevik 3 TPP 2x300MW",44.6842857,18.97130079,"Bosnia and Herzegovina (RS)","Delayed/Cancelled","Energy",800],["Belene TPP",43.63280325,25.1950299,"Bulgaria","Delayed/Cancelled","Energy",10500],["Budapest Rail Bypass",47.49643983,19.0382834,"Hungary","Delayed/Cancelled","Infrastructure and Maritime Transport",1200],["Vardar Valley HPP 300MW",41.73725986,21.7669696,"North Macedonia","Delayed/Cancelled","Energy",1500],["Moraca HPP 238MW",42.57286453,19.35530178,"Montenegro","Delayed/Cancelled","Energy",543],["Tirana-Dibra Arber Motorway",41.44558114,19.97808635,"Albania","Delayed/Cancelled","Infrastructure and Maritime Transport",190],["Europort Shengjin",41.81403005,19.59138639,"Albania","Delayed/Cancelled","Infrastructure and Maritime Transport",1200],["HPPs Buk Bijela, Foča, and Paunci",43.55100277,18.79089104,"Bosnia and Herzegovina (RS)","Planning and Permit Stage","Energy",null],["Tarnita-Lapustesti hydropower plant",46.71408022,23.26862174,"Romania","Planning and Permit Stage","Energy",1100],["Takeover of KMGI (Petromida oil refinery)",44.34393935,28.64663169,"Romania","Planning and Permit Stage","Energy",598],["Stavalj TPP",43.27384976,20.12403419,"Serbia","Planning and Permit Stage","Energy",700],["Airport in Trebinje",42.70973163,18.34707708,"Bosnia and Herzegovina (RS)","Delayed/Cancelled","Infrastructure and Maritime Transport",null],["Cernavoda 3&4 NPP 2x720MW",44.31756921,28.05776234,"Romania","Delayed/Cancelled","Energy",7200],["Comarnic-Brasov highway",45.24495856,25.62697505,"Romania","Delayed/Cancelled","Infrastructure and Maritime Transport",1200],["Vidraru HPP reconstruction",45.36659242,24.63063293,"Romania","Planning and Permit Stage","Energy",82],["Dukovany Nuclear Power Plant",49.08520923,16.14992084,"Czech Republic","Planning and Permit Stage","Energy",5270]],"fields":[{"name":"name","type":"string","format":"","analyzerType":"STRING"},{"name":"lat","type":"real","format":"","analyzerType":"FLOAT"},{"name":"lon","type":"real","format":"","analyzerType":"FLOAT"},{"name":"country","type":"string","format":"","analyzerType":"STRING"},{"name":"status","type":"string","format":"","analyzerType":"STRING"},{"name":"sector","type":"string","format":"","analyzerType":"STRING"},{"name":"value_mn_EU","type":"integer","format":"","analyzerType":"INT"}]}}];
+            const config = {"version":"v1","config":{"visState":{"filters":[],"layers":[{"id":"8itfu8","type":"point","config":{"dataId":"93nbrvcm","label":"Point","color":[155,28,4],"columns":{"lat":"lat","lng":"lon","altitude":null},"isVisible":true,"visConfig":{"radius":18.8,"fixedRadius":false,"opacity":0.8,"outline":true,"thickness":2,"strokeColor":[255,254,230],"colorRange":{"name":"ColorBrewer Blues-3","type":"singlehue","category":"ColorBrewer","colors":["#deebf7","#9ecae1","#3182bd"]},"strokeColorRange":{"name":"Global Warming","type":"sequential","category":"Uber","colors":["#5A1846","#900C3F","#C70039","#E3611C","#F1920E","#FFC300"]},"radiusRange":[0,50],"filled":true},"hidden":false,"textLabel":[]},"visualChannels":{"colorField":null,"colorScale":"quantile","strokeColorField":null,"strokeColorScale":"quantile","sizeField":null,"sizeScale":"linear"}}],"interactionConfig":{"tooltip":{"fieldsToShow":{"93nbrvcm":[{"name":"name","format":null},{"name":"country","format":null},{"name":"status","format":null},{"name":"sector","format":null},{"name":"value_mn_EU","format":null}]},"compareMode":false,"compareType":"absolute","enabled":true},"brush":{"size":0.5,"enabled":false},"geocoder":{"enabled":true},"coordinate":{"enabled":false}},"layerBlending":"normal","splitMaps":[],"animationConfig":{"currentTime":null,"speed":1}},"mapState":{"bearing":-16.825998645903855,"dragRotate":true,"latitude":44.78951966120904,"longitude":21.12016827096704,"pitch":33.01114619393617,"zoom":5,"isSplit":false},"mapStyle":{"styleType":"zhxxh5n","topLayerGroups":{},"visibleLayerGroups":{"label":true,"road":true,"building":true,"water":true},"threeDBuildingColor":[194.6103322548211,191.81688250953655,185.2988331038727],"mapStyles":{"zhxxh5n":{"accessToken":"pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q","custom":true,"icon":"https://api.mapbox.com/styles/v1/franzindustries/ckpw88z8703zy18mni11gw7t9/static/-122.3391,37.7922,9,0,0/400x300?access_token=pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q&logo=false&attribution=false","id":"zhxxh5n","label":"csd-cee-dev2-copy","url":"mapbox://styles/franzindustries/ckpw88z8703zy18mni11gw7t9"}}}}};
+
+            const loadedData = keplerGl.KeplerGlSchema.load(
+              datasets,
+              config
+            );
+
+            store.dispatch(keplerGl.addDataToMap({
+              datasets: loadedData.datasets,
+              config: loadedData.config,
+              options: {
+                centerMap: false
+              }
+            }));
+          }(KeplerGl, store))
+        </script>
+      </body>
+    </html>
+  
