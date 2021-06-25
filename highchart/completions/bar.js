@@ -16,15 +16,25 @@ Highcharts.chart('container', {
 'Under Construction',
 'Planning and Permit Stage',
 'Delayed/Cancelled'],
+labels: {
+    overflow: 'justify',
+    style: {
+            fontWeight: 'bold',
+            fontSize: 16
+        }
+},
         title: {
             text: null
         }
     },
     yAxis: {
         min: 0,
-
         labels: {
-            overflow: 'justify'
+            overflow: 'justify',
+            style: {
+                    fontWeight: 'bold',
+                    fontSize: 16
+                }
         },
         title:{
         text:null
@@ -32,9 +42,13 @@ Highcharts.chart('container', {
     },
     plotOptions: {
         bar: {
-            dataLabels: {
-                enabled: true
-            }
+          dataLabels: {
+            enabled: true,
+            style: {
+                        fontWeight: 'bold',
+                        fontSize: 16
+                    }
+          }
         }
     },
     legend: {

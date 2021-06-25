@@ -415,6 +415,16 @@ var config = {
               }
             ],
             onChapterExit: [
+              {
+                  layer: 'cce_greece',
+                  opacity: 0,
+                  duration: 3000
+              },
+              {
+                  layer: 'cce_states',
+                  opacity: 0,
+                  duration: 3000
+              }
             ]
         },
         {
@@ -456,16 +466,6 @@ var config = {
                   layer: 'debt_gdp_label',
                   opacity: 0,
                   duration: 2000
-              },
-              {
-                  layer: 'cce_greece',
-                  opacity: 0,
-                  duration: 3000
-              },
-              {
-                  layer: 'cce_states',
-                  opacity: 0,
-                  duration: 3000
               }
             ]
         },

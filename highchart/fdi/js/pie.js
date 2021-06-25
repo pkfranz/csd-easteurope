@@ -48,7 +48,10 @@ Highcharts.chart("container", {
       },
       dataLabels: {
         enabled: true,
-        fontSize: 16,
+        style: {
+                    fontWeight: 'bold',
+                    fontSize: 16
+                },
         format: "{point.name}<br> (€{point.y:,f} million)"
       }
     }
@@ -76,6 +79,14 @@ Highcharts.chart("container", {
         : percentage + suffix;
     }
   },
+  activeAxisLabelStyle: {
+  textDecoration: 'none',
+  fontStyle: 'italic'
+},
+activeDataLabelStyle: {
+  textDecoration: 'none',
+  fontStyle: 'italic'
+},
 
   series: [
     {
