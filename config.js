@@ -232,6 +232,16 @@ var config = {
                   layer: 'gov_index',
                   opacity: 0.8,
                   duration: 2000
+              },
+              {
+                  layer: 'cce_greece',
+                  opacity: 1,
+                  duration: 3000
+              },
+              {
+                  layer: 'cce_states',
+                  opacity: 1,
+                  duration: 3000
               }
             ],
             onChapterExit: [
@@ -239,7 +249,17 @@ var config = {
               layer: 'gov_index',
               opacity: 0,
               duration: 2000
-              }
+            },
+            {
+                layer: 'cce_greece',
+                opacity: 0,
+                duration: 3000
+            },
+            {
+                layer: 'cce_states',
+                opacity: 0,
+                duration: 3000
+            }
             ]
         },
         {
@@ -248,21 +268,27 @@ var config = {
             hidden: false,
             title: 'Chinese economic footprint: growing by leaps and bounds',
             image: '',
-            description: 'Since 2009, around USD 14 billion in Chinese funds have entered in the region in the form of grants, development loans, mergers and acquisition of domestic assets and concession agreements. This height graph shows the total value of these investments for FY 2009.',
+            description: 'Since 2009, around USD 14 billion in Chinese funds have entered in the region in the form of grants, development loans, mergers and acquisition of domestic assets and concession agreements. This height graph shows the total value of these investments since that year.',
             location: {
-              center: [19.699919, 43.821952],
-              zoom: 5,
-              pitch: 51.50,
-              bearing: -28.80
+              center: [22.910286, 45.644010],
+              zoom: 4.75,
+              pitch: 57.37,
+              bearing: 44
             },
             mapAnimation: 'flyTo',
             rotateAnimation: true,
             callback: '',
             onChapterEnter: [
+
               {
                   layer: 'fdi',
                   opacity: 0.8,
                   duration: 2000
+              },
+              {
+                layer: 'cce_states_3d',
+                opacity: 1,
+                duration: 2000
               }
             ],
             onChapterExit: [
@@ -270,6 +296,11 @@ var config = {
                   layer: 'fdi',
                   opacity: 0,
                   duration: 1000
+              },
+              {
+                layer: 'cce_states_3d',
+                opacity: 0,
+                duration: 2000
               }
             ]
         },
@@ -294,7 +325,17 @@ var config = {
                   layer: 'csd_2009_outflow',
                   opacity: 0.8,
                   duration: 2000
-              }
+              },
+              {
+                 layer: 'cce_greece',
+                 opacity: 1,
+                 duration: 3000
+             },
+             {
+                 layer: 'cce_states',
+                 opacity: 1,
+                 duration: 3000
+             }
             ],
             onChapterExit: [
               {
@@ -384,10 +425,10 @@ var config = {
             image: '',
             description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for the small regional economies. For some of the smaller economies like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.',
             location: {
-              center: [21.7241853, 45.3757894],
-              zoom: 3.5,
-              pitch: 0,
-              bearing: 0
+                center: [17.547948, 45.326302],
+                zoom: 4.8,
+                pitch: 0,
+                bearing: 0
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -397,11 +438,22 @@ var config = {
                   layer: 'csd_debt_gdp',
                   opacity: .8,
                   duration: 2000
+              },
+              {
+                  layer: 'debt_gdp_label',
+                  opacity: 1,
+                  duration: 2000
               }
+
             ],
             onChapterExit: [
               {
                   layer: 'csd_debt_gdp',
+                  opacity: 0,
+                  duration: 2000
+              },
+              {
+                  layer: 'debt_gdp_label',
                   opacity: 0,
                   duration: 2000
               },
@@ -456,19 +508,29 @@ var config = {
             image: '',
             description: '<ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul>',
             location: {
-              center: [21.7241853, 45.3757894],
-              zoom: 3.5,
-              pitch: 0,
-              bearing: 0
+                center: [17.547948, 45.326302],
+                zoom: 4.8,
+                pitch: 0,
+                bearing: 0
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
               {
-                  layer: 'state_data',
-                  opacity: 1,
+                  layer: 'gov_index',
+                  opacity: .8,
                   duration: 2000
+              },
+              {
+                  layer: 'cce_greece',
+                  opacity: 1,
+                  duration: 3000
+              },
+              {
+                  layer: 'cce_states',
+                  opacity: 1,
+                  duration: 3000
               },
               {
                   layer: 'satellite',
@@ -477,7 +539,11 @@ var config = {
               }
             ],
             onChapterExit: [
-
+              {
+                  layer: 'gov_index',
+                  opacity: 0,
+                  duration: 2000
+              }
             ]
         },
         {
@@ -519,8 +585,8 @@ var config = {
             image: '',
             description: 'Chinese energy projects appear particularly worrying due to their impact on global warming, air quality and emissions, landscape degradation and biodiversity. <ul><li>A long-lasting effect of the Chinese investment in CEE countries is what can be described as “a synergy of failures”:</li><ul><li>Delayed transition to cleaner forms of energy (in particular in Western Balkan countries),</li><li>Non-compliance with European environmental standards, and increased dependency on coal-fired power generation.</li><li>Delay of the unavoidable coal phase-out over the next decade with disastrous economic consequences in terms of stranded assets and painful transition for coal-dependent workers.</li></ul><li>The environmental impact assessment shows a positive correlation between the Chinese economic influence and an increase in green-house gas emissions but this negative environmental impact is bound to increase in the future as all carbon-intensive projects come online and the effect of the recently-constructed ones kick in.</li></ul>',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
+                center: [17.547948, 45.326302],
+                zoom: 4.8,
                 pitch: 0,
                 bearing: 0
             },
@@ -550,8 +616,8 @@ var config = {
             image: '',
             description: 'Here is the share of coal-fired power plants in these countries.',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
+                center: [17.547948, 45.326302],
+                zoom: 4.8,
                 pitch: 0,
                 bearing: 0
             },
@@ -579,10 +645,10 @@ var config = {
             hidden: false,
             title: 'Renewable Share of Power',
             image: '',
-            description: 'Here is the share of coal-fired power plants in these countries.',
+            description: 'And here is the share of renewable power.',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
+                center: [17.547948, 45.326302],
+                zoom: 4.8,
                 pitch: 0,
                 bearing: 0
             },
