@@ -198,7 +198,16 @@ var config = {
               }
             ],
             onChapterExit: [
-
+              {
+                  layer: 'state_data',
+                  opacity: 0,
+                  duration: 2000
+              },
+              {
+                  layer: 'serbia',
+                  opacity: 0,
+                  duration: 2000
+              }
             ]
         },
         {
@@ -210,19 +219,27 @@ var config = {
             image: '',
             description: 'The different dimensions of the Chinese economic footprint include the structural trade dependence, the Chinese investment stocks, the level of financial flows and the Chinese corporate presence. An Index of Chinese Economic Influence in the region shows that: <ul><li>China has increased its influence in the region from just 0,46% of the economy in 2009 to 1.25% in 2019.</li><li>The regional average masks significant country differences with Czechia, Hungary, Serbia and Bosnia and Herzegovina having seen the biggest increase in Chinese economic influence.</li><li>The large increase in trade flows from China and the development of a number of large-scale infrastructure and energy projects have made these countries more vulnerable than others in the region.</li></ul>',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
-                pitch: 0,
-                bearing: 0
+              center: [17.950513, 45.302615],
+              zoom: 5,
+              pitch: 0,
+              bearing: 0
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-
+              {
+                  layer: 'gov_index',
+                  opacity: 0.8,
+                  duration: 2000
+              }
             ],
             onChapterExit: [
-
+              {
+              layer: 'gov_index',
+              opacity: 0,
+              duration: 2000
+              }
             ]
         },
         {
@@ -243,14 +260,14 @@ var config = {
             callback: '',
             onChapterEnter: [
               {
-                  layer: 'csd_2009_outflow',
+                  layer: 'fdi',
                   opacity: 0.8,
                   duration: 2000
               }
             ],
             onChapterExit: [
               {
-                  layer: 'csd_2009_outflow',
+                  layer: 'fdi',
                   opacity: 0,
                   duration: 1000
               }
@@ -336,11 +353,6 @@ var config = {
             callback: '',
             onChapterEnter: [
               {
-                  layer: '10_companies',
-                  opacity: .75,
-                  duration: 2000
-              },
-              {
                   layer: 'cce_greece',
                   opacity: 1,
                   duration: 3000
@@ -362,11 +374,6 @@ var config = {
               }
             ],
             onChapterExit: [
-              {
-                  layer: '10_companies',
-                  opacity: 0,
-                  duration: 2000
-              }
             ]
         },
         {
@@ -377,10 +384,10 @@ var config = {
             image: '',
             description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for the small regional economies. For some of the smaller economies like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.',
             location: {
-                center: [20.937562, 42.065657],
-                zoom: 5,
-                pitch: 0,
-                bearing: 0
+              center: [21.7241853, 45.3757894],
+              zoom: 3.5,
+              pitch: 0,
+              bearing: 0
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -390,16 +397,7 @@ var config = {
                   layer: 'csd_debt_gdp',
                   opacity: .9,
                   duration: 2000
-              },
-              {
-                  layer: 'cce_greece',
-                  opacity: 1,
-                  duration: 3000
-              },
-              {
-                  layer: 'cce_states',
-                  opacity: 1,
-                  duration: 3000
+              }ration: 3000
               }
             ],
             onChapterExit: [
@@ -459,10 +457,10 @@ var config = {
             image: '',
             description: '<ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul>',
             location: {
-                center: [21.7241853, 45.3757894],
-                zoom: 3.5,
-                pitch: 0,
-                bearing: 0
+              center: [21.7241853, 45.3757894],
+              zoom: 3.5,
+              pitch: 0,
+              bearing: 0
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -531,10 +529,80 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-
+              {
+                  layer: 'env_index',
+                  opacity: 0.8,
+                  duration: 2000
+              }
             ],
             onChapterExit: [
-
+              {
+                  layer: 'env_index',
+                  opacity: 0,
+                  duration: 2000
+              }
+            ]
+        },
+        {
+            id: '16B',
+            alignment: 'left',
+            hidden: false,
+            title: 'Coal Fired Power',
+            image: '',
+            description: 'Here is the share of coal-fired power plants in these countries.',
+            location: {
+                center: [21.7241853, 45.3757894],
+                zoom: 3.5,
+                pitch: 0,
+                bearing: 0
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [
+              {
+                  layer: 'coal',
+                  opacity: 0.8,
+                  duration: 2000
+              }
+            ],
+            onChapterExit: [
+              {
+                  layer: 'coal',
+                  opacity: 0,
+                  duration: 2000
+              }
+            ]
+        },
+        {
+            id: '16C',
+            alignment: 'left',
+            hidden: false,
+            title: 'Renewable Share of Power',
+            image: '',
+            description: 'Here is the share of coal-fired power plants in these countries.',
+            location: {
+                center: [21.7241853, 45.3757894],
+                zoom: 3.5,
+                pitch: 0,
+                bearing: 0
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [
+              {
+                  layer: 'renew',
+                  opacity: 0.8,
+                  duration: 2000
+              }
+            ],
+            onChapterExit: [
+              {
+                  layer: 'renew',
+                  opacity: 0,
+                  duration: 2000
+              }
             ]
         },
         {

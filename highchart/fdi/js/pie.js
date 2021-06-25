@@ -21,6 +21,7 @@ Highcharts.setOptions({
 
 Highcharts.chart("container", {
   chart: {
+    animation: true,
     type: "pie",
     margin: [10, 0, 50, 0],
   //  styledMode: true,
@@ -47,6 +48,7 @@ Highcharts.chart("container", {
       },
       dataLabels: {
         enabled: true,
+        fontSize: 16,
         format: "{point.name}<br> (€{point.y:,f} million)"
       }
     }
@@ -58,6 +60,7 @@ Highcharts.chart("container", {
     }
   },
   tooltip: {
+    fontSize: 16,
     headerFormat:
       "<span style=\"font-size: 13px;text-align:center;margin-bottom: 5px;font-weight: bold;font-family: 'Roboto', arial, sans-serif;\"> {point.key}</span><br/>",
 
