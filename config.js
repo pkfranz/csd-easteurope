@@ -395,9 +395,8 @@ var config = {
             onChapterEnter: [
               {
                   layer: 'csd_debt_gdp',
-                  opacity: .9,
+                  opacity: .8,
                   duration: 2000
-              }ration: 3000
               }
             ],
             onChapterExit: [
