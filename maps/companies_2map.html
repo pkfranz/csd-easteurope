@@ -1,0 +1,229 @@
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8"/>
+        <title>Kepler.gl embedded map</title>
+
+        <!--Uber Font-->
+        <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
+
+        <!--MapBox css-->
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css" rel="stylesheet">
+
+        <!-— facebook open graph tags -->
+        <meta property="og:url" content="http://kepler.gl/" />
+        <meta property="og:title" content="Large-scale WebGL-powered Geospatial Data Visualization Tool" />
+        <meta property="og:description" content="Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets." />
+        <meta property="og:site_name" content="kepler.gl" />
+        <meta property="og:image" content="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/kepler.gl-meta-tag.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="800" />
+
+        <!-— twitter card tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@uber">
+        <meta name="twitter:creator" content="@uber">
+        <meta name="twitter:title" content="Large-scale WebGL-powered Geospatial Data Visualization Tool">
+        <meta name="twitter:description" content="Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets.">
+        <meta name="twitter:image" content="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/kepler.gl-meta-tag.png" />
+
+        <!-- Load React/Redux -->
+        <script src="https://unpkg.com/react@16.8.4/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/redux@3.7.2/dist/redux.js" crossorigin></script>
+        <script src="https://unpkg.com/react-redux@7.1.3/dist/react-redux.min.js" crossorigin></script>
+        <script src="https://unpkg.com/styled-components@4.1.3/dist/styled-components.min.js" crossorigin></script>
+
+        <!-- Load Kepler.gl -->
+        <script src="https://unpkg.com/kepler.gl@2.5.1/umd/keplergl.min.js" crossorigin></script>
+
+        <style type="text/css">
+          body {margin: 0; padding: 0; overflow: hidden;}
+        </style>
+
+        <!--MapBox token-->
+        <script>
+          /**
+           * Provide your MapBox Token
+           **/
+          const MAPBOX_TOKEN = 'pk.eyJ1IjoidWJlcmRhdGEiLCJhIjoiY2p5aHB5bzEzMDI3MjNucWx4dmhvbW5wYyJ9.ZjLMWjog4imdrZhtheCOtA';
+          const WARNING_MESSAGE = 'Please Provide a Mapbox Token in order to use Kepler.gl. Edit this file and fill out MAPBOX_TOKEN with your access key';
+        </script>
+
+        <!-- GA: Delete this as you wish, However to pat ourselves on the back, we only track anonymous pageview to understand how many people are using kepler.gl. -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-64694404-19', {
+            'storage': 'none',
+            'clientId': localStorage.getItem('ga:clientId')
+          });
+          ga(function(tracker) {
+              localStorage.setItem('ga:clientId', tracker.get('clientId'));
+          });
+          ga('set', 'checkProtocolTask', null); // Disable file protocol checking.
+          ga('set', 'checkStorageTask', null); // Disable cookie storage checking.
+          ga('set', 'historyImportTask', null); // Disable history checking (requires reading from cookies).
+          ga('set', 'page', 'keplergl-html');
+          ga('send', 'pageview');
+        </script>
+      </head>
+      <body>
+        <!-- We will put our React component inside this div. -->
+        <div id="app">
+          <!-- Kepler.gl map will be placed here-->
+        </div>
+
+        <!-- Load our React component. -->
+        <script>
+          /* Validate Mapbox Token */
+          if ((MAPBOX_TOKEN || '') === '' || MAPBOX_TOKEN === 'PROVIDE_MAPBOX_TOKEN') {
+            alert(WARNING_MESSAGE);
+          }
+
+          /** STORE **/
+          const reducers = (function createReducers(redux, keplerGl) {
+            return redux.combineReducers({
+              // mount keplerGl reducer
+              keplerGl: keplerGl.keplerGlReducer.initialState({
+                uiState: {
+                  readOnly: true,
+                  currentModal: null
+                }
+              })
+            });
+          }(Redux, KeplerGl));
+
+          const middleWares = (function createMiddlewares(keplerGl) {
+            return keplerGl.enhanceReduxMiddleware([
+              // Add other middlewares here
+            ]);
+          }(KeplerGl));
+
+          const enhancers = (function craeteEnhancers(redux, middles) {
+            return redux.applyMiddleware(...middles);
+          }(Redux, middleWares));
+
+          const store = (function createStore(redux, enhancers) {
+            const initialState = {};
+
+            return redux.createStore(
+              reducers,
+              initialState,
+              redux.compose(enhancers)
+            );
+          }(Redux, enhancers));
+          /** END STORE **/
+
+          /** COMPONENTS **/
+          var KeplerElement = (function makeKeplerElement(react, keplerGl, mapboxToken) {
+            var LogoSvg = function LogoSvg() {
+              return react.createElement(
+                "div",
+                { className: "logo-container", style: {position: 'fixed', zIndex: 10000, padding: '4px'} },
+                  react.createElement(
+                    "svg",
+                    {
+                      className: "kepler_gl__logo",
+                      width: "107px",
+                      height: "21px",
+                      viewBox: "0 0 124 24"
+                    },
+                    react.createElement(
+                      "g",
+                      { transform: "translate(13.500000, 13.500000) rotate(45.000000) translate(-13.500000, -13.500000) translate(4.000000, 4.000000)" },
+                      react.createElement("rect", { x: "0", y: "6", transform: "matrix(2.535181e-06 1 -1 2.535181e-06 18.1107 6.0369)", fill: "#535C6C", width: "12.1", height: "12.1" }),
+                      react.createElement("rect", { x: "6", y: "0", transform: "matrix(2.535182e-06 1 -1 2.535182e-06 18.1107 -6.0369)", fill:"#1FBAD6", width: "12.1", height: "12.1" })
+                    ),
+                    react.createElement(
+                      "g",
+                      {},
+                      react.createElement("path", { fill:"#1FBAD6", d: "M39,8.7h2.2l-2.8,4.2l2.9,5.1H39l-2.4-4.2h-1.3V18h-2V5l2-0.1v7.3h1.3L39,8.7z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M42.4,13.3c0-1.5,0.4-2.7,1.1-3.5s1.8-1.2,3.1-1.2c1.3,0,2.2,0.4,2.8,1.1c0.6,0.7,0.9,1.8,0.9,3.3 c0,0.4,0,0.8,0,1.1h-5.8c0,1.6,0.8,2.4,2.4,2.4c1,0,2-0.2,2.9-0.6l0.2,1.7c-0.4,0.2-0.9,0.4-1.4,0.5s-1.1,0.2-1.7,0.2 c-1.5,0-2.6-0.4-3.3-1.2C42.8,16.1,42.4,14.9,42.4,13.3z M46.6,10.1c-0.7,0-1.2,0.2-1.5,0.5c-0.4,0.4-0.6,0.9-0.6,1.7h4 c0-0.8-0.2-1.4-0.5-1.7S47.2,10.1,46.6,10.1z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M57.1,18.2c-1,0-1.8-0.3-2.3-0.9l0,0l0,1.3v2.5h-2V8.7h1.5l0.3,0.9h0c0.3-0.3,0.7-0.6,1.2-0.7 c0.4-0.2,0.9-0.3,1.4-0.3c1.2,0,2.1,0.4,2.7,1.1c0.6,0.7,0.9,2,0.9,3.7c0,1.6-0.3,2.8-1,3.7C59.2,17.8,58.3,18.2,57.1,18.2z M56.7,10.3c-0.4,0-0.8,0.1-1.1,0.2c-0.3,0.2-0.6,0.4-0.8,0.7v4.3c0.2,0.3,0.4,0.5,0.7,0.7c0.3,0.2,0.7,0.3,1.1,0.3 c0.7,0,1.2-0.2,1.6-0.7c0.4-0.5,0.5-1.3,0.5-2.5c0-0.8-0.1-1.4-0.2-1.8s-0.4-0.7-0.7-0.9C57.6,10.4,57.2,10.3,56.7,10.3z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M63.2,16V5l2-0.1v10.8c0,0.3,0.1,0.5,0.2,0.6c0.1,0.1,0.3,0.2,0.6,0.2c0.3,0,0.6,0,0.9-0.1V18 c-0.4,0.1-1,0.2-1.6,0.2c-0.8,0-1.3-0.2-1.7-0.5S63.2,16.8,63.2,16z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M68.2,13.3c0-1.5,0.4-2.7,1.1-3.5c0.7-0.8,1.8-1.2,3.1-1.2c1.3,0,2.2,0.4,2.8,1.1c0.6,0.7,0.9,1.8,0.9,3.3 c0,0.4,0,0.8,0,1.1h-5.8c0,1.6,0.8,2.4,2.4,2.4c1,0,2-0.2,2.9-0.6l0.2,1.7c-0.4,0.2-0.9,0.4-1.4,0.5s-1.1,0.2-1.7,0.2 c-1.5,0-2.6-0.4-3.3-1.2C68.6,16.1,68.2,14.9,68.2,13.3z M72.4,10.1c-0.7,0-1.2,0.2-1.5,0.5c-0.4,0.4-0.6,0.9-0.6,1.7h4 c0-0.8-0.2-1.4-0.5-1.7S73,10.1,72.4,10.1z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M80.2,8.7l0.1,1.7h0c0.3-0.6,0.7-1.1,1.1-1.4c0.4-0.3,1-0.5,1.6-0.5c0.4,0,0.7,0,1,0.1l-0.1,2 c-0.3-0.1-0.7-0.2-1-0.2c-0.7,0-1.3,0.3-1.7,0.8c-0.4,0.5-0.7,1.2-0.7,2.1V18h-2V8.7H80.2z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M83.8,17c0-0.8,0.4-1.2,1.2-1.2c0.8,0,1.2,0.4,1.2,1.2c0,0.8-0.4,1.1-1.2,1.1C84.2,18.2,83.8,17.8,83.8,17z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M88.5,18.7c0-0.8,0.4-1.4,1.2-1.8c-0.6-0.3-0.9-0.8-0.9-1.5c0-0.7,0.4-1.2,1.1-1.6c-0.3-0.3-0.6-0.6-0.7-0.9 c-0.2-0.4-0.2-0.8-0.2-1.3c0-1,0.3-1.8,0.9-2.3c0.6-0.5,1.6-0.8,2.8-0.8c0.5,0,1,0,1.4,0.1c0.4,0.1,0.8,0.2,1.1,0.4l2.4-0.2v1.5 h-1.5c0.2,0.4,0.2,0.8,0.2,1.3c0,1-0.3,1.7-0.9,2.2s-1.5,0.8-2.7,0.8c-0.7,0-1.2-0.1-1.6-0.2c-0.1,0.1-0.2,0.2-0.3,0.3 c-0.1,0.1-0.1,0.2-0.1,0.4c0,0.2,0.1,0.3,0.2,0.4c0.1,0.1,0.3,0.2,0.6,0.2l2.7,0.2c1,0.1,1.7,0.3,2.2,0.6c0.5,0.3,0.8,0.9,0.8,1.7 c0,0.6-0.2,1.1-0.5,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.7,0.2-1.5,0.4-2.4,0.4c-1.3,0-2.3-0.2-3-0.6C88.8,20.1,88.5,19.5,88.5,18.7z M95.1,18.4c0-0.3-0.1-0.5-0.3-0.7s-0.6-0.2-1.1-0.3l-2.7-0.3c-0.2,0.1-0.4,0.3-0.5,0.5c-0.1,0.2-0.2,0.4-0.2,0.6 c0,0.4,0.2,0.8,0.5,1c0.4,0.2,1,0.3,1.8,0.3C94.2,19.5,95.1,19.2,95.1,18.4z M94.3,11.5c0-0.6-0.1-1-0.4-1.2 c-0.3-0.2-0.7-0.3-1.3-0.3c-0.7,0-1.1,0.1-1.4,0.3c-0.3,0.2-0.4,0.6-0.4,1.2s0.1,1,0.4,1.2c0.3,0.2,0.7,0.3,1.4,0.3 c0.6,0,1.1-0.1,1.3-0.4S94.3,12,94.3,11.5z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M99.4,16V5l2-0.1v10.8c0,0.3,0.1,0.5,0.2,0.6c0.1,0.1,0.3,0.2,0.6,0.2c0.3,0,0.6,0,0.9-0.1V18 c-0.4,0.1-1,0.2-1.6,0.2c-0.8,0-1.3-0.2-1.7-0.5S99.4,16.8,99.4,16z" })
+                    )
+                  )
+                );
+              };
+
+            return function App() {
+              var rootElm = react.useRef(null);
+              var _useState = react.useState({
+                width: window.innerWidth,
+                height: window.innerHeight
+              });
+              var windowDimension = _useState[0];
+              var setDimension = _useState[1];
+              react.useEffect(function sideEffect(){
+                function handleResize() {
+                  setDimension({width: window.innerWidth, height: window.innerHeight});
+                };
+                window.addEventListener('resize', handleResize);
+                return function() {window.removeEventListener('resize', handleResize);};
+              }, []);
+              return react.createElement(
+                'div',
+                {style: {position: 'absolute', left: 0, width: '100vw', height: '100vh'}},
+                LogoSvg(),
+                react.createElement(keplerGl.KeplerGl, {
+                  mapboxApiAccessToken: mapboxToken,
+                  id: "map",
+                  width: windowDimension.width,
+                  height: windowDimension.height
+                })
+              )
+            }
+          }(React, KeplerGl, MAPBOX_TOKEN));
+
+          const app = (function createReactReduxProvider(react, reactRedux, KeplerElement) {
+            return react.createElement(
+              reactRedux.Provider,
+              {store},
+              react.createElement(KeplerElement, null)
+            )
+          }(React, ReactRedux, KeplerElement));
+          /** END COMPONENTS **/
+
+          /** Render **/
+          (function render(react, reactDOM, app) {
+            reactDOM.render(app, document.getElementById('app'));
+          }(React, ReactDOM, app));
+        </script>
+        <!-- The next script will show how to interact directly with Kepler map store -->
+        <script>
+          /**
+           * Customize map.
+           * In the following section you can use the store object to dispatch Kepler.gl actions
+           * to add new data and customize behavior
+           */
+          (function customize(keplerGl, store) {
+            const datasets = [{"version":"v1","data":{"id":"2y0orjrf","label":"06242021_china_companies.csv","color":[143,47,191],"allData":[["BERALB","n.a.",0,42.06222,20.01667],["VICTORIA INVEST","n.a.",1,41.110507,20.078053],["ALBANIAN SINOMINE RESOURCE CO.","n.a.",0,41.319646,19.815228],["Z.U. CRVENA APOTEKA","8",0,44.4155658,17.08358198],["SIMIL D.O.O.","3",0,45.18146016,16.82384763],["TEHNO INDE D.O.O.","1",0,44.8429223,17.17467503],["ХУАУЕЙ ТЕХНОЛОДЖИС БЪЛГАРИЯ ЕООД","105",0,42.66072602,23.38310843],["ХЕЛИОС ПРОДЖЕКТС ЕАД","15",0,42.6937077,23.33078983],["БИ СИ АЙ ЧЕРГАНОВО ЕООД","10",0,42.62160778,25.3862131],["ИНГРАМ МИКРО ЕСЕССИ ЕМЕА ЕООД","10",0,42.66079702,23.38227158],["ХЕРА АГРО ЕООД","6",0,42.09599553,24.81635066],["СУИСПОРТ БЪЛГАРИЯ АД","6",0,42.68510306,23.40520368],["ТОМ ТЕЙЛЪР СОФИЯ ЕООД","5",0,42.66033919,23.38305604],["АМК ЗАДВИЖВАЩА И УПРАВЛЯВАЩА ТЕХНИКА ЕООД","3",0,42.88810174,25.31824001],["БЕСТСОЛАР ЕООД","2",0,42.6938713,23.33154085],["LINDE POHONY, S.R.O.","240",1,48.83206012,14.33372191],["HUAWEI TECHNOLOGIES (CZECH), S.R.O.","207",0,50.04443402,14.458309],["PEGATRON CZECH, S.R.O.","152",0,49.77135817,18.2658834],["LINDE MATERIAL HANDLING ČESKÁ REPUBLIKA, S.R.O.","70",2,50.07866181,14.51990014],["STILL ČR, S.R.O.","65",1,50.06329208,14.53540852],["KSM CASTINGS CZ, A.S.","64",0,50.86373064,14.84757115],["MINERVA BOSKOVICE, A.S.","46",0,49.49234535,16.65405979],["URBAN TRANSPORTE, S.R.O.","13",0,49.14512079,16.59392484],["SK SLAVIA PRAHA - FOTBAL, A.S.","6",1,50.06785127,14.47071809],["MESIT FOUNDRY, A.S.","6",1,49.0745935,17.47998042],["ΣΤΑΘΜΟΣ ΕΜΠΟΡΕΥΜΑΤΟΚΙΒΩΤΙΩΝ ΠΕΙΡΑΙΑ Α.Ε.","161",0,37.93693059,23.63837489],["ΟΡΓΑΝΙΣΜΟΣ ΛΙΜΕΝΟΣ ΠΕΙΡΑΙΩΣ Α.Ε.","109",4,37.93829155,23.63621459],["HUAWEI ΤΕΧΝΟΛΟΓΙΕΣ Α.Ε.","n.a.",0,38.03662319,23.79724315],["SYNGENTA HELLAS Α.Ε.Β.Ε.","n.a.",0,38.3101655,23.62264863],["ZTE HELLAS Α.Ε.","n.a.",0,38.0407317,23.8041906],["ΕΛΑΣΤΙΚΑ PIRELLI A.E.E.","n.a.",4,37.91394107,23.74387414],["CLUB MEDITERRANEE ΕΛΛΑΣ Α.Ε.","n.a.",0,37.97900334,23.73733287],["SWISSPORT HELLAS Α.Ε.","n.a.",1,37.92022171,23.93481152],["HUAWEI TECHNOLOGIES D.O.O.","37",0,45.79848887,15.97014145],["DUBROVAČKI VRTOVI SUNCA D.O.O.","24",1,42.69462434,18.01863258],["SYNGENTA AGRO D.O.O.","22",0,45.81218636,15.86173909],["TOM TAILOR ZAGREB D.O.O.","17",0,45.76986534,15.95022206],["LEDVANCE D.O.O.","6",0,45.80050343,15.93509163],["HUAWEI TECHNOLOGIES HUNGARY HÍRADÁSTECHNIKAI KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","171",0,47.53511408,19.05962791],["INGRAM MICRO MAGYARORSZÁG NAGYKERESKEDELMI KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","117",0,47.55458563,19.07899911],["COFCO INTERNATIONAL HUNGARY KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","50",0,47.49056846,19.02086438],["ADAMA HUNGARY ZRT.","32",1,47.55347024,19.07845615],["LINDE MAGYARORSZÁG ANYAGMOZGATÁSI KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","28",0,47.35404512,19.12104101],["KACO HUNGARY IPARI ÉS KERESKEDELMI KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","19",0,47.64509725,17.42640003],["INESA EUROPA GYÁRTÓ, SZOLGÁLTATÓ ÉS KERESKEDELMI KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","11",0,47.61675316,19.11815519],["PIRELLI HUNGARY GUMIABRONCS KERESKEDELMI ÉS SZOLGÁLTATÓ KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","9",2,47.46098165,19.04944951],["TOM TAILOR RETAIL KFT.","4",0,47.47417747,19.04129044],["NH HUNGARY SZÁLLODAÜZEMELTETŐ KORLÁTOLT FELELŐSSÉGŰ TÁRSASÁG","3",0,47.51287964,19.05150063],["DŽEK POT","2",0,42.44221835,19.24671892],["VATROOPREMA","1",1,42.42852884,19.26199369],["SINOHIDRO KORPOREJSHN LIMITED PEKING PODRUZHNICA SKOPJE","125",0,41.99409205,21.39041942],["MAKSTIL SKOPJE AD","60",2,42.01596784,21.4634442],["BALKAN METAL SKOPJE SKOPJE DOOEL","8",0,42.00702923,21.47154061],["ZTE MAKEDONIJA SKOPJE DOOEL","5",0,41.478472,20.559263],["ATB SEVER MAK SKOPJE DOOEL","1",0,41.99251093,21.4157545],["PIRELLI TYRES ROMANIA SRL","417",2,44.41610468,24.40175962],["HUAWEI TECHNOLOGIES SRL","276",0,44.47918487,26.10262576],["PREH ROMANIA SRL","150",0,45.68400233,25.51472121],["SYNGENTA AGRO SRL","95",0,44.50498447,26.07987996],["QUIN ROMANIA SRL (now JOYSONQUIN AUTOMOTIVE SYSTEMS ROMANIA SRL)","83",0,45.65116207,25.53465137],["EUROSPORT DHS SA","59",2,45.85503856,22.96131222],["ADAMA AGRICULTURAL SOLUTIONS SRL","41",0,44.48936094,26.12687674],["RRC TECH DISTRIBUTION SRL (now INGRAM MICRO DISTRIBUTION SRL)","27",0,44.46383709,26.06171868],["COSCO SHIPPING LINES (ROMANIA) CO. LTD. SRL","27",0,44.41969741,26.11067733],["MAGONTEC SRL","24",0,46.32447178,21.46968842],["HBIS GROUP SERBIA IRON & STEEL","286",2,44.81636837,20.43700936],["ŽELEZARA SMEDEREVO D.O.O.","164",5,44.60469157,20.97145751],["INGRAM MICRO D.O.O. BEOGRAD","46",0,44.81382988,20.38937789],["HIP-AZOTARA DOO PANČEVO","32",1,44.83697769,20.6742108],["SYNGENTA AGRO DOO BEOGRAD","27",0,44.81283297,20.39689713],["ATB SEVER DOO","14",11,46.09763317,19.69883253],["HUAWEI TECHNOLOGIES DOO BEOGRAD","10",0,44.81131392,20.39872262],["BMP A.D. NOVI BEOGRAD","10",1,44.81242509,20.43549036],["TOM TAILOR DOO BEOGRAD","8",0,44.81235945,20.39227507],["ŠAFRAN D.O.O. BEOGRAD","6",0,44.83536664,20.36265973]],"fields":[{"name":"name","type":"string","format":"","analyzerType":"STRING"},{"name":"revenue_2016","type":"string","format":"","analyzerType":"STRING"},{"name":"subsidiaries","type":"integer","format":"","analyzerType":"INT"},{"name":"lat","type":"real","format":"","analyzerType":"FLOAT"},{"name":"lon","type":"real","format":"","analyzerType":"FLOAT"}]}}];
+            const config = {"version":"v1","config":{"visState":{"filters":[],"layers":[{"id":"82dg45a","type":"cluster","config":{"dataId":"2y0orjrf","label":"Cluster Map","color":[255,203,153],"columns":{"lat":"lat","lng":"lon"},"isVisible":true,"visConfig":{"opacity":0.8,"clusterRadius":40,"colorRange":{"name":"ColorBrewer Greens-6","type":"singlehue","category":"ColorBrewer","colors":["#edf8e9","#c7e9c0","#a1d99b","#74c476","#31a354","#006d2c"]},"radiusRange":[0,50],"colorAggregation":"mode"},"hidden":false,"textLabel":[{"field":null,"color":[255,255,255],"size":18,"offset":[0,0],"anchor":"start","alignment":"center"}]},"visualChannels":{"colorField":{"name":"revenue_2016","type":"string"},"colorScale":"ordinal"}},{"id":"7wr6k4n","type":"point","config":{"dataId":"2y0orjrf","label":"Companies","color":[255,203,153],"columns":{"lat":"lat","lng":"lon","altitude":null},"isVisible":true,"visConfig":{"radius":20.8,"fixedRadius":false,"opacity":0.8,"outline":true,"thickness":2,"strokeColor":[250,184,160],"colorRange":{"name":"ColorBrewer Greens-6","type":"singlehue","category":"ColorBrewer","colors":["#edf8e9","#c7e9c0","#a1d99b","#74c476","#31a354","#006d2c"]},"strokeColorRange":{"name":"Global Warming","type":"sequential","category":"Uber","colors":["#5A1846","#900C3F","#C70039","#E3611C","#F1920E","#FFC300"]},"radiusRange":[0,50],"filled":true},"hidden":false,"textLabel":[{"field":null,"color":[255,255,255],"size":18,"offset":[0,0],"anchor":"start","alignment":"center"}]},"visualChannels":{"colorField":{"name":"revenue_2016","type":"string"},"colorScale":"ordinal","strokeColorField":null,"strokeColorScale":"quantile","sizeField":null,"sizeScale":"linear"}}],"interactionConfig":{"tooltip":{"fieldsToShow":{"2y0orjrf":[{"name":"name","format":null}]},"compareMode":false,"compareType":"relative","enabled":true},"brush":{"size":0.5,"enabled":false},"geocoder":{"enabled":false},"coordinate":{"enabled":false}},"layerBlending":"normal","splitMaps":[{"layers":{"7wr6k4n":false,"82dg45a":true}},{"layers":{"7wr6k4n":true,"82dg45a":false}}],"animationConfig":{"currentTime":null,"speed":1}},"mapState":{"bearing":0,"dragRotate":false,"latitude":43.76585368696825,"longitude":17.436838311577926,"pitch":0,"zoom":3.6088960660020555,"isSplit":true},"mapStyle":{"styleType":"mq6k59","topLayerGroups":{},"visibleLayerGroups":{"label":true,"road":true,"building":true,"water":true},"threeDBuildingColor":[194.6103322548211,191.81688250953655,185.2988331038727],"mapStyles":{"qfwgcg":{"accessToken":"pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q","custom":true,"icon":"https://api.mapbox.com/styles/v1/franzindustries/ckpw88z8703zy18mni11gw7t9/static/-122.3391,37.7922,9,0,0/400x300?access_token=pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q&logo=false&attribution=false","id":"qfwgcg","label":"csd-cee-dev2-copy","url":"mapbox://styles/franzindustries/ckpw88z8703zy18mni11gw7t9"},"mq6k59":{"accessToken":"pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q","custom":true,"icon":"https://api.mapbox.com/styles/v1/franzindustries/ckpw88z8703zy18mni11gw7t9/static/-122.3391,37.7922,9,0,0/400x300?access_token=pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q&logo=false&attribution=false","id":"mq6k59","label":"csd-cee-dev2-copy","url":"mapbox://styles/franzindustries/ckpw88z8703zy18mni11gw7t9"}}}}};
+
+            const loadedData = keplerGl.KeplerGlSchema.load(
+              datasets,
+              config
+            );
+
+            store.dispatch(keplerGl.addDataToMap({
+              datasets: loadedData.datasets,
+              config: loadedData.config,
+              options: {
+                centerMap: false
+              }
+            }));
+          }(KeplerGl, store))
+        </script>
+      </body>
+    </html>
+  
