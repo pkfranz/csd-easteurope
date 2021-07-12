@@ -22,6 +22,8 @@ Highcharts.setOptions({
 Highcharts.chart("container", {
   chart: {
     animation: true,
+    plotBackgroundColor: '#FAFAFA',
+    backgroundColor: '#FAFAFA',
     type: "pie",
     margin: [10, 0, 50, 0],
   //  styledMode: true,

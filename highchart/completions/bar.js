@@ -1,7 +1,9 @@
 
 Highcharts.chart('container', {
     chart: {
-        type: 'bar'
+        type: 'bar',
+        plotBackgroundColor: '#FAFAFA',
+        backgroundColor: '#FAFAFA'
     },
     colors: ['#283B53', '#669DA1'],
     title: {

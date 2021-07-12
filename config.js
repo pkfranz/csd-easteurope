@@ -94,7 +94,7 @@ var config = {
             hidden: false,
             title: 'The Stanari Plant Today',
             image: '',
-            description: 'The completed plant as of June 2021. <video width="100%" height="640" autoplay loop muted>><source src="images/stanari.mp4" type="video/mp4"></video>',
+            description: 'The completed plant as of June 2021. <video width="100%" height="640"  autoplay loop muted>><source src="images/stanari.mp4" type="video/mp4"></video>',
             location: {
                 center: [17.7854985, 44.7547679],
                 zoom: 13.5,
@@ -217,7 +217,7 @@ var config = {
             hidden: false,
             title: 'Index of Chinese Economic Influence ',
             image: '',
-            description: 'The different dimensions of the Chinese economic footprint include the structural trade dependence, the Chinese investment stocks, the level of financial flows and the Chinese corporate presence. An Index of Chinese Economic Influence in the region shows that: <ul><li>China has increased its influence in the region from just 0,46% of the economy in 2009 to 1.25% in 2019.</li><li>The regional average masks significant country differences with Czechia, Hungary, Serbia and Bosnia and Herzegovina having seen the biggest increase in Chinese economic influence.</li><li>The large increase in trade flows from China and the development of a number of large-scale infrastructure and energy projects have made these countries more vulnerable than others in the region.</li></ul>',
+            description: 'The different dimensions of the Chinese economic footprint include the structural trade dependence, the Chinese investment stocks, the level of financial flows and the Chinese corporate presence. An Index of Chinese Economic Influence in the region shows that: <ul><li>China has increased its influence in the region from just 0,46% of the economy in 2009 to 1.25% in 2019.</li><li>The regional average masks significant country differences with Czechia, Hungary, Serbia and Bosnia and Herzegovina having seen the biggest increase in Chinese economic influence.</li><li>The large increase in trade flows from China and the development of a number of large-scale infrastructure and energy projects have made these countries more vulnerable than others in the region.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
               center: [17.950513, 45.302615],
               zoom: 5,
@@ -382,7 +382,7 @@ var config = {
             hidden: false,
             title: 'Corporate Footprint',
             image: '',
-            description: 'There are close to 10,000 firms in the region with Chinese ultimate beneficial ownership. Most of the big Chinese corporations operating in the region include:<ul><li>Electrical appliances manufacturer Gorenje,</li><li>International energy, mining and metallurgical enterprises including HBIS Group, Zijin Group, agricultural and logistical firms (COFCO, Syngenta and COSTCO),</li><li>The IT and telecommunication giants Ingram Micro (owned by the HNA Group) and Huawei,</li><li>The global textile company, Tom Tailor (owned by Fosun).</li></ul>The local subsidiaries of these handful of Chinese companies that are global leaders in their respective industries generate more than 90% of the Chinese-controlled revenue in the region.<iframe width="100%" height="500" frameborder="0" src="maps/companies_2map.html"></iframe>',
+            description: 'There are close to 10,000 firms in the region with Chinese ultimate beneficial ownership. Most of the big Chinese corporations operating in the region include:<ul><li>Electrical appliances manufacturer Gorenje,</li><li>International energy, mining and metallurgical enterprises including HBIS Group, Zijin Group, agricultural and logistical firms (COFCO, Syngenta and COSTCO),</li><li>The IT and telecommunication giants Ingram Micro (owned by the HNA Group) and Huawei,</li><li>The global textile company, Tom Tailor (owned by Fosun).</li></ul>The local subsidiaries of these handful of Chinese companies that are global leaders in their respective industries generate more than 90% of the Chinese-controlled revenue in the region.<iframe width="100%" height="500" frameborder="0" src="maps/companies_2mapv2.html"></iframe>',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -433,7 +433,7 @@ var config = {
             hidden: false,
             title: 'Structural Vulnerability to Chinese Economic Presence',
             image: '',
-            description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for the small regional economies. For some of the smaller economies like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.',
+            description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for the small regional economies. For some of the smaller economies like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.<img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -506,7 +506,7 @@ var config = {
             hidden: false,
             title: 'Governance Impact',
             image: '',
-            description: '<ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul>',
+            description: '<ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -583,7 +583,7 @@ var config = {
             hidden: false,
             title: 'Environmental Impact',
             image: '',
-            description: 'Chinese energy projects appear particularly worrying due to their impact on global warming, air quality and emissions, landscape degradation and biodiversity. <ul><li>A long-lasting effect of the Chinese investment in CEE countries is what can be described as “a synergy of failures”:</li><ul><li>Delayed transition to cleaner forms of energy (in particular in Western Balkan countries),</li><li>Non-compliance with European environmental standards, and increased dependency on coal-fired power generation.</li><li>Delay of the unavoidable coal phase-out over the next decade with disastrous economic consequences in terms of stranded assets and painful transition for coal-dependent workers.</li></ul><li>The environmental impact assessment shows a positive correlation between the Chinese economic influence and an increase in green-house gas emissions but this negative environmental impact is bound to increase in the future as all carbon-intensive projects come online and the effect of the recently-constructed ones kick in.</li></ul>',
+            description: 'Chinese energy projects appear particularly worrying due to their impact on global warming, air quality and emissions, landscape degradation and biodiversity. <ul><li>A long-lasting effect of the Chinese investment in CEE countries is what can be described as “a synergy of failures”:</li><ul><li>Delayed transition to cleaner forms of energy (in particular in Western Balkan countries),</li><li>Non-compliance with European environmental standards, and increased dependency on coal-fired power generation.</li><li>Delay of the unavoidable coal phase-out over the next decade with disastrous economic consequences in terms of stranded assets and painful transition for coal-dependent workers.</li></ul><li>The environmental impact assessment shows a positive correlation between the Chinese economic influence and an increase in green-house gas emissions but this negative environmental impact is bound to increase in the future as all carbon-intensive projects come online and the effect of the recently-constructed ones kick in.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -614,7 +614,7 @@ var config = {
             hidden: false,
             title: 'Coal Fired Power',
             image: '',
-            description: 'Here is the share of coal-fired power plants in these countries.',
+            description: 'Here is the share of coal-fired power plants in these countries. Chinese investments in the coal sector are derailing the process of the implementation of the energy and climate acquis by Western Balkan countries and are delaying the phase-out of lignite-fired power plants in the EU members from the region. This has broader policy implications for the whole European continent as the 16 coal-based TPPs in the Western Balkans emitted in 2016 as much sulphur dioxide pollution as all 250 TPPs in the EU.<img style="width: auto !important;" src="images/coal_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -645,7 +645,7 @@ var config = {
             hidden: false,
             title: 'Renewable Share of Power',
             image: '',
-            description: 'And here is the share of renewable power.',
+            description: 'And here is the share of renewable power. Even when China has expressed readiness to “invest in wind and solar”, CEE governments have generally not embraced a full-scale policy of renewable energy support. China is yet to deliver on its promise of greening its BRI agenda by introducing a Green Belt and Road Investment Strategy.<img style="width: auto !important;" src="images/renew_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
