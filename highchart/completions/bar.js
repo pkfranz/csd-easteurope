@@ -43,6 +43,13 @@ labels: {
         }
     },
     plotOptions: {
+      series: {
+    events: {
+        legendItemClick: function() {
+          return false;
+        }
+    }
+},
         bar: {
           dataLabels: {
             enabled: true,
@@ -62,6 +69,7 @@ labels: {
     },
     credits: {
       enabled: true,
+      href: false,
       text: "Center for the Study of Democracy"
     },
     series: [{

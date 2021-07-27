@@ -1,5 +1,5 @@
 var config = {
-    style: 'mapbox://styles/franzindustries/ckpw88z8703zy18mni11gw7t9',
+    style: 'mapbox://styles/franzindustries/ckrlgg2mu6uyy17qv3buan3wv',
     accessToken: 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q',
     showMarkers: false,
     markerColor: '#3FB1CE',
@@ -105,6 +105,11 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
+              {
+                layer: 'polyfill',
+                opacity: 0.8,
+                duration: 3000
+              }
             ],
             onChapterExit: [
               {
@@ -204,6 +209,11 @@ var config = {
                   duration: 2000
               },
               {
+                layer: 'polyfill',
+                opacity: 0,
+                duration: 3000
+              },
+              {
                   layer: 'serbia',
                   opacity: 0,
                   duration: 2000
@@ -217,7 +227,7 @@ var config = {
             hidden: false,
             title: 'Index of Chinese Economic Influence ',
             image: '',
-            description: 'The different dimensions of the Chinese economic footprint include the structural trade dependence, the Chinese investment stocks, the level of financial flows and the Chinese corporate presence. An Index of Chinese Economic Influence in the region shows that: <ul><li>China has increased its influence in the region from just 0,46% of the economy in 2009 to 1.25% in 2019.</li><li>The regional average masks significant country differences with Czechia, Hungary, Serbia and Bosnia and Herzegovina having seen the biggest increase in Chinese economic influence.</li><li>The large increase in trade flows from China and the development of a number of large-scale infrastructure and energy projects have made these countries more vulnerable than others in the region.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
+            description: '<em>The Index is based on the assessment of the level of trade dependence, the size of financial flows from China and the corporate footprint of Chinese companies as share of GDP/the total turnover of businesses in the local economies.</em><br /><br />The different dimensions of the Chinese economic footprint include the structural trade dependence, the Chinese investment stocks, the level of financial flows and the Chinese corporate presence. An Index of Chinese Economic Influence in the region shows that: <ul><li>China has increased its influence in the region from just 0,46% of the economy in 2009 to 1.25% in 2019.</li><li>The regional average masks significant country differences with Czechia, Hungary, Serbia and Bosnia and Herzegovina having seen the biggest increase in Chinese economic influence.</li><li>The large increase in trade flows from China and the development of a number of large-scale infrastructure and energy projects have made these countries more vulnerable than others in the region.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
               center: [17.950513, 45.302615],
               zoom: 5,
@@ -282,7 +292,7 @@ var config = {
 
               {
                   layer: 'fdi',
-                  opacity: 0.8,
+                  opacity: 1,
                   duration: 2000
               },
               {
@@ -323,7 +333,7 @@ var config = {
             onChapterEnter: [
               {
                   layer: 'csd_2009_outflow',
-                  opacity: 0.8,
+                  opacity: 1,
                   duration: 2000
               },
               {
@@ -364,7 +374,7 @@ var config = {
             onChapterEnter: [
               {
                   layer: 'csd_2019_outflow',
-                  opacity: 0.8,
+                  opacity: 1,
                   duration: 2000
               }
             ],
@@ -399,6 +409,11 @@ var config = {
                   duration: 3000
               },
               {
+                layer: 'polyfill',
+                opacity: 0.8,
+                duration: 3000
+              },
+              {
                   layer: 'state_data',
                   opacity: 1,
                   duration: 2000
@@ -419,6 +434,11 @@ var config = {
                   layer: 'cce_greece',
                   opacity: 0,
                   duration: 3000
+              },
+              {
+                layer: 'polyfill',
+                opacity: 0,
+                duration: 3000
               },
               {
                   layer: 'cce_states',
@@ -506,7 +526,7 @@ var config = {
             hidden: false,
             title: 'Governance Impact',
             image: '',
-            description: '<ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
+            description: '<em>The Index is based on a comprehensive survey with national experts, diplomats and policy-makers in each country.</em><ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -583,7 +603,7 @@ var config = {
             hidden: false,
             title: 'Environmental Impact',
             image: '',
-            description: 'Chinese energy projects appear particularly worrying due to their impact on global warming, air quality and emissions, landscape degradation and biodiversity. <ul><li>A long-lasting effect of the Chinese investment in CEE countries is what can be described as “a synergy of failures”:</li><ul><li>Delayed transition to cleaner forms of energy (in particular in Western Balkan countries),</li><li>Non-compliance with European environmental standards, and increased dependency on coal-fired power generation.</li><li>Delay of the unavoidable coal phase-out over the next decade with disastrous economic consequences in terms of stranded assets and painful transition for coal-dependent workers.</li></ul><li>The environmental impact assessment shows a positive correlation between the Chinese economic influence and an increase in green-house gas emissions but this negative environmental impact is bound to increase in the future as all carbon-intensive projects come online and the effect of the recently-constructed ones kick in.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
+            description: '<em>The Index is based on the correlation between the level of Chinese economic presence and the emissions of green-house gases (GHG), as well as an expert assessment of the environmental impact of Chinese-led projects.</em><br /><br />Chinese energy projects appear particularly worrying due to their impact on global warming, air quality and emissions, landscape degradation and biodiversity. <ul><li>A long-lasting effect of the Chinese investment in CEE countries is what can be described as “a synergy of failures”:</li><ul><li>Delayed transition to cleaner forms of energy (in particular in Western Balkan countries),</li><li>Non-compliance with European environmental standards, and increased dependency on coal-fired power generation.</li><li>Delay of the unavoidable coal phase-out over the next decade with disastrous economic consequences in terms of stranded assets and painful transition for coal-dependent workers.</li></ul><li>The environmental impact assessment shows a positive correlation between the Chinese economic influence and an increase in green-house gas emissions but this negative environmental impact is bound to increase in the future as all carbon-intensive projects come online and the effect of the recently-constructed ones kick in.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
