@@ -8,7 +8,7 @@ var config = {
     title: 'Chinese Economic Influence in Central and Eastern Europe',
     subtitle: '',
     byline: '',
-    footer: '<h2>Read the full report on Chinese state capture</h2><ul><li><strong>Lead Researcher</strong>: Martin Vladimirov</li><li><strong>Visualizations</strong>: Paul Franz</li></ul><br /><strong>Data:</strong> <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a><br /><br /><img src="images/logo_csd.png" width="300" height="75" /><br /><br />&copy; Center for The Study of Democracy, 2021',
+    footer: '<h2>Read the full report</h2><a href="https://www.csd.bg" target="_blank"><img style="width: 300px;" src="images/report_cover.jpg" /></a><br /><br /><strong>Credits:</strong><ul><li><strong>Lead Researcher</strong>: Martin Vladimirov</li><li><strong>Visualizations</strong>: Paul Franz</li></ul><br /><strong>Data:</strong> <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a><br /><br /><img src="images/logo_csd.png" width="300" height="75" /><br /><br />&copy; Center for The Study of Democracy, 2021',
     chapters: [
         {
             id: '01',
@@ -696,7 +696,7 @@ var config = {
             hidden: false,
             title: 'What’s Next?',
             image: 'images/china_ceec.jpeg',
-            description: '<ul><li>A robust U.S. and EU response using a range of economic tools for building back the foundations for a low-carbon economic development,</li><li>EU-wide governance standards/screenings for Chinese investments,</li><li>The inclusion of the Western Balkans in the EU rule of law mechanism</li><li>An enhanced role for the Energy Community.</li></ul>',
+            description: '<ul><li>A robust U.S. and EU response using a range of economic tools for building back the foundations for a low-carbon economic development,</li><li>EU-wide governance standards/screenings for Chinese investments,</li><li>The inclusion of the Western Balkans in the EU rule of law mechanism,</li><li>An enhanced role for the Energy Community.</li></ul>',
             location: {
                 center: [19.01, 45.49],
                 zoom: 4.65,
