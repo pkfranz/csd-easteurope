@@ -40,6 +40,11 @@ Highcharts.chart("container", {
     text:
       "Center for the Study of Democracy"
   },
+  navigation: {
+      buttonOptions: {
+          align: 'left'
+      }
+  },
   plotOptions: {
     pie: {
       size: "100%",

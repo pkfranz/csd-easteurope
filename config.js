@@ -16,7 +16,7 @@ var config = {
             hidden: false,
             title: 'Economic Presence',
             image: '',
-            description: 'China has engaged differentially with European region, segmenting its approach towards Northern, Southern, and Central and Eastern Europe (CEE). China has set up the 17+1 initiative in the CEE, including all former Communist countries.',
+            description: 'China has engaged differentially with European regions, segmenting its approach towards Northern, Southern, and Central and Eastern Europe (CEE). China has set up the 17+1 initiative in the CEE, including all former Communist countries.',
             location: {
                 center: [19.01, 45.49],
                 zoom: 4.65,
@@ -125,7 +125,7 @@ var config = {
             hidden: false,
             title: 'Chinese Projects are Unevenly Concentrated in the Western Balkans',
             image: '',
-            description: '<ul><li>Chinese investments in CEE have been focused in a few key sectors – transportation, energy, manufacturing, and telecommunications.</li><li>Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world.</li><li>Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans.</li><li>The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.</li></ul><br /><br /><iframe width="100%" height="500" frameborder="0" src="maps/projects.html"></iframe>',
+            description: '<ul><li>Chinese investments in CEE have been focused in a few key sectors – transportation, energy, manufacturing, and telecommunications.</li><li>Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world.</li><li>Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans.</li><li>The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.</li></ul><br /><br /><iframe width="80%" height="500" frameborder="0" src="maps/projects.html"></iframe>',
             location: {
                 center: [17.950513, 45.302615],
                 zoom: 5,
@@ -148,7 +148,7 @@ var config = {
             hidden: false,
             title: 'Filling the gap for funding infrastructural and large-scale energy projects',
             image: '',
-            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development could be worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/fdi/index.html"></iframe>',
+            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development is worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/fdi/index.html"></iframe>',
             location: {
               center: [17.950513, 45.302615],
               zoom: 5,
@@ -278,7 +278,7 @@ var config = {
             hidden: false,
             title: 'Chinese economic footprint: growing by leaps and bounds',
             image: '',
-            description: 'Since 2009, around USD 14 billion in Chinese funds have entered in the region in the form of grants, development loans, mergers and acquisition of domestic assets and concession agreements. This height graph shows the total value of these investments since that year.',
+            description: 'Since 2009, around USD 14 billion in Chinese funds have entered in the region in the form of grants, development loans, mergers and acquisition of domestic assets and concession agreements. This height graph shows the total value of these financial flows.',
             location: {
               center: [22.910286, 45.644010],
               zoom: 4.75,
@@ -392,7 +392,7 @@ var config = {
             hidden: false,
             title: 'Corporate Footprint',
             image: '',
-            description: 'There are close to 10,000 firms in the region with Chinese ultimate beneficial ownership. Most of the big Chinese corporations operating in the region include:<ul><li>Electrical appliances manufacturer Gorenje,</li><li>International energy, mining and metallurgical enterprises including HBIS Group, Zijin Group, agricultural and logistical firms (COFCO, Syngenta and COSTCO),</li><li>The IT and telecommunication giants Ingram Micro (owned by the HNA Group) and Huawei,</li><li>The global textile company, Tom Tailor (owned by Fosun).</li></ul>The local subsidiaries of these handful of Chinese companies that are global leaders in their respective industries generate more than 90% of the Chinese-controlled revenue in the region.<iframe width="100%" height="500" frameborder="0" src="maps/companies_2mapv2.html"></iframe>',
+            description: 'There are close to 10,000 firms in the region with Chinese ultimate beneficial ownership. Most of the big Chinese corporations operating in the region include:<ul><li>Electrical appliances manufacturer Gorenje,</li><li>International energy, mining and metallurgical enterprises including HBIS Group, Zijin Group, agricultural and logistical firms (COFCO, Syngenta and COSTCO),</li><li>The IT and telecommunication giants Ingram Micro (owned by the HNA Group) and Huawei,</li><li>The global textile company, Tom Tailor (owned by Fosun).</li></ul>The local subsidiaries of these handful of Chinese companies that are global leaders in their respective industries generate more than 90% of the Chinese-controlled revenue in the region.<iframe width="80%" height="500" frameborder="0" src="maps/companies_2mapv2.html"></iframe>',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -453,7 +453,7 @@ var config = {
             hidden: false,
             title: 'Structural Vulnerability to Chinese Economic Presence',
             image: '',
-            description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for the small regional economies. For some of the smaller economies like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.<img style="width: auto !important;" src="images/index_ramp.png" />',
+            description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for debt traps for regional economies. For some of the smaller countries like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.<img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -495,7 +495,7 @@ var config = {
             hidden: false,
             title: 'Debt-trap Diplomacy',
             image: '',
-            description: '<ul><li>The Chinese-funded and constructed project exemplifies the Chinese debt-trap diplomacy in the Western Balkans.</li><li>Both the IMF and the World Bank have suggested that such projects were fiscally irresponsible: they have contributed to the exponential growth of public debt, which has soared above 70% of Montenegro’s GDP.</li><li>The projects have had a limited direct contribution on economic growth as the loan agreement with Chinese ExIm Bank stipulated the involvement of the Chinese state-owned infrastructure company, China Road and Bridge Corporation, and the use of Chinese construction workers amid local unemployment rate of 15.7%.</li></ul>',
+            description: '<ul><li>Both the IMF and the World Bank have suggested that Chinese-funded and constructed projects were fiscally irresponsible: they have contributed to the exponential growth of public debt, which has soared above 70% of Montenegro’s GDP.</li><li>The projects have had a limited contribution to economic growth as the loan agreement with The Chinese ExIm Bank stipulated the involvement of the Chinese state-owned infrastructure company, China Road and Bridge Corporation, and the use of Chinese construction workers amid local unemployment rate of 15.7%.</li></ul>',
             location: {
                 center: [19.345775, 42.530047],
                 zoom: 15.92,
@@ -665,7 +665,7 @@ var config = {
             hidden: false,
             title: 'Renewable Share of Power',
             image: '',
-            description: 'And here is the share of renewable power. Even when China has expressed readiness to “invest in wind and solar”, CEE governments have generally not embraced a full-scale policy of renewable energy support. China is yet to deliver on its promise of greening its BRI agenda by introducing a Green Belt and Road Investment Strategy.<img style="width: auto !important;" src="images/renew_ramp.png" />',
+            description: 'And here is the share of renewable power. Even when China has expressed readiness to invest in wind and solar, CEE governments have generally not embraced a full-scale policy of renewable energy support. China is yet to deliver on its promise of greening its BRI agenda by introducing a Green Belt and Road Investment Strategy.<img style="width: auto !important;" src="images/renew_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -696,7 +696,7 @@ var config = {
             hidden: false,
             title: 'What’s Next?',
             image: 'images/china_ceec.jpeg',
-            description: 'To counter the Chinese Economic Influence in Central and Eastern Europe, CSD calls for: <ul><li>A robust U.S. and EU response using a range of economic tools for building back the foundations for a low-carbon economic development,</li><li>EU-wide governance standards/screenings for Chinese investments,</li><li>The inclusion of the Western Balkans in the EU rule of law mechanism</li><li>An enhanced role for the Energy Community.</li></ul>',
+            description: '<ul><li>A robust U.S. and EU response using a range of economic tools for building back the foundations for a low-carbon economic development,</li><li>EU-wide governance standards/screenings for Chinese investments,</li><li>The inclusion of the Western Balkans in the EU rule of law mechanism</li><li>An enhanced role for the Energy Community.</li></ul>',
             location: {
                 center: [19.01, 45.49],
                 zoom: 4.65,
