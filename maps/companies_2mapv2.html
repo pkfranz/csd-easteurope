@@ -164,7 +164,7 @@
               });
               var windowDimension = _useState[0];
               var setDimension = _useState[1];
-              react.useEffect(function sideEffect(){
+              react .useEffect(function sideEffect(){
                 function handleResize() {
                   setDimension({width: window.innerWidth, height: window.innerHeight});
                 };
@@ -184,7 +184,7 @@
               )
             }
           }(React, KeplerGl, MAPBOX_TOKEN));
-
+        
           const app = (function createReactReduxProvider(react, reactRedux, KeplerElement) {
             return react.createElement(
               reactRedux.Provider,
@@ -226,4 +226,3 @@
         </script>
       </body>
     </html>
-  

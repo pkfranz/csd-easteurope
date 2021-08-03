@@ -43,6 +43,11 @@ var config = {
                      duration: 3000
                  },
                  {
+                     layer: 'satellite',
+                     opacity: 0,
+                     duration: 2000
+                 },
+                 {
                      layer: 'cce_states',
                      opacity: 1,
                      duration: 3000
@@ -82,6 +87,11 @@ var config = {
                      layer: 'satellite',
                      opacity: 1,
                      duration: 2000
+                 },
+                 {
+                   layer: 'polyfill',
+                   opacity: 0,
+                   duration: 3000
                  }
             ],
             onChapterExit: [
@@ -94,7 +104,7 @@ var config = {
             hidden: false,
             title: 'The Stanari Plant Today',
             image: '',
-            description: 'The completed plant as of June 2021. <video width="100%" height="640"  autoplay loop muted>><source src="images/stanari_sm.mp4" type="video/mp4"></video>',
+            description: 'The completed plant as of June 2021. <video width="100%" height="640"  autoplay loop muted>><source src="images/stanari.mp4" type="video/mp4"></video>',
             location: {
                 center: [17.7854985, 44.7547679],
                 zoom: 13.5,
@@ -125,7 +135,7 @@ var config = {
             hidden: false,
             title: 'Chinese Projects are Unevenly Concentrated in the Western Balkans',
             image: '',
-            description: '<ul><li>Chinese investments in CEE have been focused in a few key sectors – transportation, energy, manufacturing, and telecommunications.</li><li>Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world.</li><li>Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans.</li><li>The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.</li></ul><br /><br /><iframe width="80%" height="500" frameborder="0" src="maps/projects.html"></iframe>',
+            description: '<ul><li>Chinese investments in CEE have been focused in a few key sectors – transportation, energy, manufacturing, and telecommunications.</li><li>Chinese capital inflows in the region are a small share (2.7%) of the total Chinese investments in the world.</li><li>Yet, they represent a transfer of significant financial resources relative to the size of the economies from the region, especially in the Western Balkans.</li><li>The attractiveness of the Western Balkans versus EU member-states is that the Chinese investments do not need to comply with EU’s strict transparency, competition and environmental rules on issues such as public procurement, impact assessment and state aid.</li></ul><br /><br /><iframe width="80%" height="500" frameborder="0" scrolling="no" src="maps/projects.html"></iframe>',
             location: {
                 center: [17.950513, 45.302615],
                 zoom: 5,
@@ -165,6 +175,11 @@ var config = {
                   duration: 2000
               },
               {
+                layer: 'polyfill',
+                opacity: 0.8,
+                duration: 3000
+              },
+              {
                   layer: 'serbia',
                   opacity: 1,
                   duration: 2000
@@ -197,6 +212,11 @@ var config = {
                   duration: 2000
               },
               {
+                layer: 'polyfill',
+                opacity: 0.8,
+                duration: 3000
+              },
+              {
                   layer: 'serbia',
                   opacity: 1,
                   duration: 2000
@@ -225,7 +245,7 @@ var config = {
             id: '07',
             alignment: 'left',
             hidden: false,
-            title: 'Index of Chinese Economic Influence ',
+            title: 'Index of Chinese Economic Influence',
             image: '',
             description: '<em>The Index is based on the assessment of the level of trade dependence, the size of financial flows from China and the corporate footprint of Chinese companies as share of GDP/the total turnover of businesses in the local economies.</em><br /><br />The different dimensions of the Chinese economic footprint include the structural trade dependence, the Chinese investment stocks, the level of financial flows and the Chinese corporate presence. An Index of Chinese Economic Influence in the region shows that: <ul><li>China has increased its influence in the region from just 0,46% of the economy in 2009 to 1.25% in 2019.</li><li>The regional average masks significant country differences with Czechia, Hungary, Serbia and Bosnia and Herzegovina having seen the biggest increase in Chinese economic influence.</li><li>The large increase in trade flows from China and the development of a number of large-scale infrastructure and energy projects have made these countries more vulnerable than others in the region.</li></ul><img style="width: auto !important;" src="images/index_ramp.png" />',
             location: {
@@ -241,7 +261,7 @@ var config = {
               {
                   layer: 'gov_index',
                   opacity: 0.8,
-                  duration: 2000
+                  duration: 1000
               },
               {
                   layer: 'cce_greece',
@@ -327,14 +347,14 @@ var config = {
               pitch: 51.50,
               bearing: -28.80
             },
-            mapAnimation: 'flyTo',
+            mapAnimation: 'easeTo',
             rotateAnimation: true,
             callback: '',
             onChapterEnter: [
               {
                   layer: 'csd_2009_outflow',
                   opacity: 1,
-                  duration: 2000
+                  duration: 3000
               },
               {
                  layer: 'cce_greece',
@@ -376,7 +396,17 @@ var config = {
                   layer: 'csd_2019_outflow',
                   opacity: 1,
                   duration: 2000
-              }
+              },
+              {
+                 layer: 'cce_greece',
+                 opacity: 1,
+                 duration: 3000
+             },
+             {
+                 layer: 'cce_states',
+                 opacity: 1,
+                 duration: 3000
+             }
             ],
             onChapterExit: [
               {
@@ -399,7 +429,7 @@ var config = {
                 pitch: 0,
                 bearing: 0
             },
-            mapAnimation: 'flyTo',
+            mapAnimation: 'easeTo',
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
@@ -510,6 +540,16 @@ var config = {
                      layer: 'satellite',
                      opacity: 1,
                      duration: 4000
+                 },
+                 {
+                     layer: 'cce_greece',
+                     opacity: 0,
+                     duration: 3000
+                 },
+                 {
+                     layer: 'cce_states',
+                     opacity: 0,
+                     duration: 3000
                  }
             ],
             onChapterExit: [
@@ -698,10 +738,10 @@ var config = {
             image: 'images/china_ceec.jpeg',
             description: '<ul><li>A robust U.S. and EU response using a range of economic tools for building back the foundations for a low-carbon economic development,</li><li>EU-wide governance standards/screenings for Chinese investments,</li><li>The inclusion of the Western Balkans in the EU rule of law mechanism,</li><li>An enhanced role for the Energy Community.</li></ul>',
             location: {
-                center: [19.01, 45.49],
-                zoom: 4.65,
-                pitch: 0,
-                bearing: 0
+              center: [17.547948, 45.326302],
+              zoom: 4.8,
+              pitch: 0,
+              bearing: 0
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
