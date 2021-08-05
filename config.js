@@ -1,5 +1,5 @@
 var config = {
-    style: 'mapbox://styles/franzindustries/ckrlgg2mu6uyy17qv3buan3wv',
+    style: 'mapbox://styles/franzindustries/ckryx7rcr612w18rzu7g1whec',
     accessToken: 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q',
     showMarkers: false,
     markerColor: '#3FB1CE',

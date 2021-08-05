@@ -12,12 +12,26 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+@font-face {
+    font-family: 'Gilroy-Bold';
+    src: url('fonts/gilroy-bold.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Gilroy-Medium';
+    src: url('fonts/gilroy-medium.woff2') format('woff2');
+}
+
+* {
+    font-family: 'Gilroy-Medium', sans-serif;
+}
+
 /**
  * Remove default margin.
  */
 
 body {
   margin: 0;
+    font-family: 'Gilroy-Medium', sans-serif;
 }
 
 /* HTML5 display definitions

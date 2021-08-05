@@ -22,12 +22,10 @@ Highcharts.setOptions({
 Highcharts.chart("container", {
   chart: {
     animation: true,
-    plotBackgroundColor: '#FAFAFA',
-    backgroundColor: '#FAFAFA',
+    plotBackgroundColor: '#389599',
+    backgroundColor: '#389599',
     type: "pie",
-    margin: [10, 0, 50, 0],
-  //  styledMode: true,
-  //  colorCount: 17
+    margin: [10, 0, 50, 0]
   },
   title: {
     text: ""
@@ -38,11 +36,20 @@ Highcharts.chart("container", {
   credits: {
     href: false,
     text:
-      "Center for the Study of Democracy"
+      "<span style='color: #FAFAFA;'>Center for the Study of Democracy</span>"
   },
+  exporting: {
+     buttons: {
+         contextButton: {
+             text: '<strong>Share this chart</strong>'
+         }
+     }
+ },
   navigation: {
       buttonOptions: {
-          align: 'left'
+          align: 'left',
+          buttonSpacing: 5,
+          symbolStrokeWidth: 2
       }
   },
   plotOptions: {
@@ -65,7 +72,7 @@ Highcharts.chart("container", {
   },
   drilldown: {
     drillUpButton: {
-      position: { align: "left", y: -50 },
+      position: { align: "left", y: -10 },
       relativeTo: "spacingBox"
     }
   },

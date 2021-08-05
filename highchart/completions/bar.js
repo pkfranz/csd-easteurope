@@ -1,30 +1,39 @@
-
 Highcharts.chart('container', {
     chart: {
         type: 'bar',
-        plotBackgroundColor: '#FAFAFA',
-        backgroundColor: '#FAFAFA'
+        plotBackgroundColor: '#389599',
+        backgroundColor: '#389599'
     },
     colors: ['#283B53', '#669DA1'],
     title: {
-        text: 'Project Status'
+        text: '<strong>Project Status</strong>',
+        style: {
+    color: '#FAFAFA',
+    fontWeight: 'bold'
+        }
     },
     subtitle: {
-        text: 'Breaking down progress on Chinese-funded projects'
+        text: 'Breaking down progress on Chinese-funded projects',
+        style: {
+    color: '#FAFAFA',
+    fontWeight: 'bold'
+        }
     },
     xAxis: {
         categories: [
-'Completed',
-'Under Construction',
-'Planning and Permit Stage',
-'Delayed/Cancelled'],
-labels: {
-    overflow: 'justify',
-    style: {
+          'Completed',
+          'Under Construction',
+          'Planning and Permit Stage',
+          'Delayed/Cancelled'
+        ],
+    labels: {
+      overflow: 'justify',
+      style: {
             fontWeight: 'bold',
+            color: '#FAFAFA',
             fontSize: 16
-        }
-},
+            }
+    },
         title: {
             text: null
         }
@@ -35,6 +44,7 @@ labels: {
             overflow: 'justify',
             style: {
                     fontWeight: 'bold',
+                    color: '#FAFAFA',
                     fontSize: 16
                 }
         },
@@ -70,7 +80,21 @@ labels: {
     credits: {
       enabled: true,
       href: false,
-      text: "Center for the Study of Democracy"
+      text: "<span style='color: #FAFAFA;'>Center for the Study of Democracy</span>"
+    },
+    exporting: {
+       buttons: {
+           contextButton: {
+               text: '<strong>Share this chart</strong>'
+           }
+       }
+   },
+    navigation: {
+        buttonOptions: {
+            align: 'left',
+            buttonSpacing: 5,
+            symbolStrokeWidth: 2
+        }
     },
     series: [{
         name: 'Projects',

@@ -1,7 +1,17 @@
 @import "https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css";
-
+@font-face {
+    font-family: 'Gilroy-Bold';
+    src: url('fonts/gilroy-bold.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Gilroy-Medium';
+    src: url('fonts/gilroy-medium.woff2') format('woff2');
+}
+* {
+  font-family: 'Gilroy-Medium';
+}
 body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   font-size: 16px;
 }
 
@@ -10,19 +20,21 @@ body {
 }
 
 .title {
-  color: #333333;
+  color: #FAFAFA;
   font-size: 24px;
   max-width: 1280px;
   text-align: center;
+  font-family: 'Gilroy-Bold', sans-serif;
 }
 
 .subtitle {
   text-align: center;
-  color: #333333;
+  color: #FAFAFA;
   font-size: 16px;
   max-width: 1280px;
   margin-bottom: 1.5rem;
   line-height: 1.4;
+  font-family: 'Gilroy-Medium', sans-serif;
 }
 
 .highcharts-point,
