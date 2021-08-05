@@ -8,7 +8,7 @@ var config = {
     title: 'Chinese Economic Influence in Central and Eastern Europe',
     subtitle: '',
     byline: '',
-    footer: '<h2>Read the full report</h2><a href="https://www.csd.bg" target="_blank"><img style="width: 300px;" src="images/report_cover.jpg" /></a><br /><br /><strong>Credits:</strong><ul><li><strong>Lead Researcher</strong>: Martin Vladimirov</li><li><strong>Visualizations</strong>: Paul Franz</li></ul><br /><strong>Data:</strong> <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a><br /><br /><img src="images/logo_csd.png" width="300" height="75" /><br /><br />&copy; Center for The Study of Democracy, 2021',
+    footer: '<ul class="creditUl"><li><h4>Read the full report</h4><a href="https://www.csd.bg" target="_blank"><img style="width: 250px;" src="images/report_cover.jpg" /></a></li><li><h4>Credits & Data</h4><strong>Lead Researcher</strong>: Martin Vladimirov<br /><strong>Visualizations</strong>: Paul Franz<br /><strong>Design: </strong>Penu Kiratzov<br /><br />Data:</strong> <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a></li><li><img src="images/logo_csd.png" width="300" height="75" /><br /><br />&copy; Center for The Study of Democracy, 2021<br /><br /><a href="https://csd.bg/footer-menu/privacy/" target="_blank">Privacy Policy</a></li></ul>',
     chapters: [
         {
             id: '01',
@@ -195,7 +195,7 @@ var config = {
             hidden: false,
             title: 'China filling the gap for funding infrastructural and large-scale energy projects in CEE',
             image: '',
-            description: '<iframe width="100%" height="500" frameborder="0" src="highchart/completions/index.html"></iframe>',
+            description: '<iframe width="100%" height="550" frameborder="0" src="highchart/completions/index.html"></iframe>',
             location: {
               center: [17.950513, 45.302615],
               zoom: 5,
@@ -674,7 +674,7 @@ var config = {
             hidden: false,
             title: 'Coal Fired Power',
             image: '',
-            description: 'Here is the share of coal-fired power plants in these countries. Chinese investments in the coal sector are derailing the process of the implementation of the energy and climate acquis by Western Balkan countries and are delaying the phase-out of lignite-fired power plants in the EU members from the region. This has broader policy implications for the whole European continent as the 16 coal-based TPPs in the Western Balkans emitted in 2016 as much sulphur dioxide pollution as all 250 TPPs in the EU.<img style="width: auto !important;" src="images/coal_ramp.png" />',
+            description: 'Here is the share of coal-fired power plants in these countries. Chinese investments in the coal sector are derailing the process of the implementation of the energy and climate acquis by Western Balkan countries and are delaying the phase-out of lignite-fired power plants in the EU members from the region. This has broader policy implications for the whole European continent as the 16 coal-based TPPs in the Western Balkans emitted in 2016 as much sulphur dioxide pollution as all 250 TPPs in the EU.<img  src="images/coal_ramp.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -705,7 +705,7 @@ var config = {
             hidden: false,
             title: 'Renewable Share of Power',
             image: '',
-            description: 'And here is the share of renewable power. Even when China has expressed readiness to invest in wind and solar, CEE governments have generally not embraced a full-scale policy of renewable energy support. China is yet to deliver on its promise of greening its BRI agenda by introducing a Green Belt and Road Investment Strategy.<img style="width: auto !important;" src="images/renew_ramp.png" />',
+            description: 'And here is the share of renewable power. Even when China has expressed readiness to invest in wind and solar, CEE governments have generally not embraced a full-scale policy of renewable energy support. China is yet to deliver on its promise of greening its BRI agenda by introducing a Green Belt and Road Investment Strategy.<img src="images/renewable.png" />',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,

@@ -3,8 +3,8 @@ Highcharts.setOptions({
     thousandsSep: ","
   },
     colors: [
-      '#00876c',
-      '#479871',
+      '#00d3a9',
+      '#5fd09a',
       '#6fa878',
       '#93b882',
       '#b5c88f',
@@ -24,8 +24,7 @@ Highcharts.chart("container", {
     animation: true,
     plotBackgroundColor: '#389599',
     backgroundColor: '#389599',
-    type: "pie",
-    margin: [10, 0, 50, 0]
+    type: "pie"
   },
   title: {
     text: ""
@@ -41,14 +40,14 @@ Highcharts.chart("container", {
   exporting: {
      buttons: {
          contextButton: {
-             text: '<strong>Share this chart</strong>'
+             text: '<strong>Share this chart</strong>',
+             menuItems: ['downloadPNG', 'downloadSVG', 'downloadPDF', '']
          }
      }
  },
   navigation: {
       buttonOptions: {
           align: 'left',
-          buttonSpacing: 5,
           symbolStrokeWidth: 2
       }
   },
@@ -73,7 +72,7 @@ Highcharts.chart("container", {
   },
   drilldown: {
     drillUpButton: {
-      position: { align: "left", y: -10 },
+      position: { align: "left", y: -50 },
       relativeTo: "spacingBox"
     }
   },
