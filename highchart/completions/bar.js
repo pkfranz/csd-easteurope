@@ -48,8 +48,8 @@ Highcharts.chart('container', {
                     fontSize: 16
                 }
         },
-        title:{
-        text:null
+            title:{
+                    text:null
         }
     },
     plotOptions: {
@@ -65,6 +65,7 @@ Highcharts.chart('container', {
             enabled: true,
             style: {
                         fontWeight: 'bold',
+                        color: '#FAFAFA',
                         fontSize: 16
                     }
           }

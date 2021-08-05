@@ -64,6 +64,7 @@ Highcharts.chart("container", {
         enabled: true,
         style: {
                     fontWeight: 'bold',
+                    color: '#FAFAFA',
                     fontSize: 16
                 },
         format: "{point.name}<br> (€{point.y:,f} million)"
