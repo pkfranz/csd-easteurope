@@ -1,6 +1,7 @@
 Highcharts.chart('container', {
     chart: {
         type: 'bar',
+        spacingLeft: 50,
         plotBackgroundColor: '#389599',
         backgroundColor: '#389599'
     },
@@ -23,11 +24,11 @@ Highcharts.chart('container', {
         categories: [
           'Completed',
           'Under Construction',
-          'Planning and Permit Stage',
+          'Planning/Permit Stage',
           'Delayed/Cancelled'
         ],
     labels: {
-      overflow: 'justify',
+
       style: {
             fontWeight: 'bold',
             color: '#FAFAFA',
@@ -84,6 +85,9 @@ Highcharts.chart('container', {
       text: "<span style='color: #FAFAFA;'>Center for the Study of Democracy</span>"
     },
     exporting: {
+        sourceWidth: 1280,
+        sourceHeight: 720,
+        scale: 4,
        buttons: {
            contextButton: {
                text: '<strong>Share this chart</strong>'

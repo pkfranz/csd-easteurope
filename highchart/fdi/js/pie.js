@@ -38,6 +38,9 @@ Highcharts.chart("container", {
       "<span style='color: #FAFAFA;'>Center for the Study of Democracy</span>"
   },
   exporting: {
+    sourceWidth: 2000,
+    sourceHeight: 1000,
+    scale: 4,
      buttons: {
          contextButton: {
              text: '<strong>Share this chart</strong>',
