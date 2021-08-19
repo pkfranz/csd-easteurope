@@ -426,7 +426,7 @@ var config = {
             hidden: false,
             title: 'Corporate Footprint',
             image: '',
-            description: 'There are close to 10,000 firms in the region with Chinese ultimate beneficial ownership. Most of the big Chinese corporations operating in the region include:<ul><li>Electrical appliances manufacturer Gorenje,</li><li>International energy, mining and metallurgical enterprises including HBIS Group, Zijin Group, agricultural and logistical firms (COFCO, Syngenta and COSTCO),</li><li>The IT and telecommunication giants Ingram Micro (owned by the HNA Group) and Huawei,</li><li>The global textile company, Tom Tailor (owned by Fosun).</li></ul>The local subsidiaries of these handful of Chinese companies that are global leaders in their respective industries generate more than 90% of the Chinese-controlled revenue in the region.<iframe width="80%" height="500" frameborder="0" src="maps/companies_2mapv2.html"></iframe>',
+            description: 'There are close to 10,000 firms in the region with Chinese ultimate beneficial ownership. Most of the big Chinese corporations operating in the region include:<ul><li>Electrical appliances manufacturer Gorenje,</li><li>International energy, mining and metallurgical enterprises including HBIS Group, Zijin Group, agricultural and logistical firms (COFCO, Syngenta and COSTCO),</li><li>The IT and telecommunication giants Ingram Micro (owned by the HNA Group) and Huawei,</li><li>The global textile company, Tom Tailor (owned by Fosun).</li></ul>The local subsidiaries of these handful of Chinese companies that are global leaders in their respective industries generate more than 90% of the Chinese-controlled revenue in the region.<br /><br /><iframe width="80%" height="500" frameborder="0" scrolling="no" src="maps/companies_2mapv2.html"></iframe>',
             location: {
                 center: [17.547948, 45.326302],
                 zoom: 4.8,
@@ -486,7 +486,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'Structural Vulnerability to Chinese Economic Presence',
-            image: 'images/index_ramp.png',
+            image: 'images/index_ramp_noPer.png',
             description: 'Loan-based intergovernmental agreements have raised the specter of debt traps for regional economies. For some of the smaller countries like Montenegro and Bosnia and Herzegovina, Chinese-led projects make up around a quarter and a fifth of the countries’ GDP, respectively. This makes Chinese economic presence in these countries a structurally-indispensable factor.',
             location: {
                 center: [17.547948, 45.326302],
@@ -569,7 +569,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'Chinese Influence on Governance and Strategic Policy',
-            image: 'images/index_ramp.png',
+            image: 'images/index_ramp_noPer.png',
             description: '<em>The Index is based on a comprehensive survey with national experts, diplomats and policy-makers in each country.</em><ul><li>The impact on the quality of governance in CEE is strongest in Serbia, Bosnia and Herzegovina and Montenegro</li><li>All Western Balkan countries with the exception of Kosovo, which does not host any major Chinese companies or projects, score above the CEE average of 2.7 for quality of governance.</li><li>There is positive correlation between the growing Chinese economic footprint over the last decade and the deterioration of governance standards with Hungary seen as the weakest link from the EU member states.</li></ul>',
             location: {
                 center: [17.547948, 45.326302],
@@ -646,7 +646,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: 'Environmental and Climate Impact',
-            image: 'images/index_ramp.png',
+            image: 'images/index_ramp_noPer.png',
             description: '<em>The Index is based on the correlation between the level of Chinese economic presence and the emissions of green-house gases (GHG), as well as an expert assessment of the environmental impact of Chinese-led projects.</em><br /><br />Chinese energy projects appear particularly worrying due to their impact on global warming, air quality and emissions, landscape degradation and biodiversity. <ul><li>A long-lasting effect of the Chinese investment in CEE countries is what can be described as “a synergy of failures”:</li><ul><li>Delayed transition to cleaner forms of energy (in particular in Western Balkan countries),</li><li>Non-compliance with European environmental standards, and increased dependency on coal-fired power generation.</li><li>Delay of the unavoidable coal phase-out over the next decade with disastrous economic consequences in terms of stranded assets and painful transition for coal-dependent workers.</li></ul><li>The environmental impact assessment shows a positive correlation between the Chinese economic influence and an increase in green-house gas emissions but this negative environmental impact is bound to increase in the future as all carbon-intensive projects come online and the effect of the recently-constructed ones kick in.</li></ul>',
             location: {
                 center: [17.547948, 45.326302],
