@@ -321,7 +321,17 @@ var config = {
                 layer: 'cce_states_3d',
                 opacity: 1,
                 duration: 2000
-              }
+              },
+              {
+                 layer: 'cce_greece',
+                 opacity: 0,
+                 duration: 3000
+             },
+             {
+                 layer: 'cce_states',
+                 opacity: 0,
+                 duration: 3000
+             }
             ],
             onChapterExit: [
               {
