@@ -158,7 +158,7 @@ var config = {
             hidden: false,
             title: 'Filling the gap for funding infrastructural and large-scale energy projects',
             image: '',
-            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development is worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="500" frameborder="0" src="highchart/fdi/index.html"></iframe>',
+            description: 'Chinese projects and large-scale asset acquisitions in CEE that have been completed or are under execution are estimated at around USD 10.4 billion. The total pipeline of projects at different stages of development is worth more than USD 51.5 billion.<br /><br /><iframe width="100%" height="550" frameborder="0" src="highchart/fdi/index.html"></iframe>',
             location: {
               center: [17.950513, 45.302615],
               zoom: 5,
@@ -195,7 +195,7 @@ var config = {
             hidden: false,
             title: 'China filling the gap for funding infrastructural and large-scale energy projects in CEE',
             image: '',
-            description: '<iframe width="100%" height="550" frameborder="0" src="highchart/completions/index.html"></iframe>',
+            description: '<iframe width="100%" height="600" frameborder="0" src="highchart/completions/index.html"></iframe>',
             location: {
               center: [17.950513, 45.302615],
               zoom: 5,

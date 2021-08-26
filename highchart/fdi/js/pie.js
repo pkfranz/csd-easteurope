@@ -56,7 +56,6 @@ Highcharts.chart("container", {
   },
   plotOptions: {
     pie: {
-      size: "100%",
       states: {
         inactive: {
           opacity: 0.75
