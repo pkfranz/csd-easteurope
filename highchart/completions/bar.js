@@ -79,11 +79,6 @@ Highcharts.chart('container', {
         backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
         shadow: true
     },
-    credits: {
-      enabled: true,
-      href: false,
-      text: "<span style='color: #FAFAFA;'>Center for the Study of Democracy</span>"
-    },
     exporting: {
         sourceWidth: 1280,
         sourceHeight: 720,

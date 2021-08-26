@@ -32,11 +32,6 @@ Highcharts.chart("container", {
   subtitle: {
     text: ""
   },
-  credits: {
-    href: false,
-    text:
-      "<span style='color: #FAFAFA;'>Center for the Study of Democracy</span>"
-  },
   exporting: {
     sourceWidth: 2000,
     sourceHeight: 1000,
@@ -66,6 +61,7 @@ Highcharts.chart("container", {
         style: {
                     fontWeight: 'bold',
                     color: '#FAFAFA',
+                    textDecoration: 'none',
                     fontSize: 16
                 },
         format: "{point.name}<br> (€{point.y:,f} million)"
@@ -73,6 +69,14 @@ Highcharts.chart("container", {
     }
   },
   drilldown: {
+    activeAxisLabelStyle: {
+            color: '#FAFAFA',
+            textDecoration: 'none'
+        },
+        activeDataLabelStyle: {
+            color: '#FAFAFA',
+            textDecoration: 'none'
+        },
     drillUpButton: {
       position: { align: "left", y: -50 },
       relativeTo: "spacingBox"
@@ -95,14 +99,6 @@ Highcharts.chart("container", {
         : percentage + suffix;
     }
   },
-  activeAxisLabelStyle: {
-  textDecoration: 'none',
-  fontStyle: 'italic'
-},
-activeDataLabelStyle: {
-  textDecoration: 'none',
-  fontStyle: 'italic'
-},
 
   series: [
     {
@@ -127,6 +123,14 @@ activeDataLabelStyle: {
     }
   ],
   drilldown: {
+    activeAxisLabelStyle: {
+            color: '#FAFAFA',
+            textDecoration: 'none'
+        },
+        activeDataLabelStyle: {
+            color: '#FAFAFA',
+            textDecoration: 'none'
+        },
     series: [
       {
         name: "Energy",

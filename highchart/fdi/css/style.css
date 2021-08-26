@@ -37,6 +37,13 @@ body {
   font-family: 'Gilroy-Medium', sans-serif;
 }
 
+.highcharts-drilldown-data-label text {
+  text-decoration: none;
+}
+.highcharts-label .highcharts-data-label .highcharts-data-label-color-0 .highcharts-drilldown-data-label
+  text-decoration: none;
+}
+
 .highcharts-point,
 .highcharts-data-label tspan {
   /* cursor: pointer; */

@@ -8,7 +8,7 @@ var config = {
     title: 'Chinese Economic Influence in Central and Eastern Europe',
     subtitle: '',
     byline: '',
-    footer: '<ul class="creditUl"><li><h4>Read the full report</h4><a href="https://www.csd.bg" target="_blank"><img style="width: 250px;" src="images/report_cover.jpg" /></a></li><li><h4>Credits & Data</h4><strong>Lead Researcher</strong>: Martin Vladimirov<br /><strong>Dataviz & Development</strong>: Paul Franz<br /><strong>Design: </strong>Penu Kiratzov<br /><br />Data:</strong> <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a></li><li><img src="images/logo_csd.png" width="300" height="75" /><br /><br />&copy; Center for The Study of Democracy, 2021<br /><br /><a href="https://csd.bg/footer-menu/privacy/" target="_blank">Privacy Policy</a></li></ul>',
+    footer: '<ul class="creditUl"><li><h4>Read the full report</h4><a href="https://www.csd.bg" target="_blank"><img style="width: 250px;" src="images/report_cover.jpg" /></a></li><li><h4>Credits & Data</h4><strong>Lead Researcher</strong>: Martin Vladimirov<br /><strong>Dataviz & Development</strong>: Paul Franz<br /><strong>Design: </strong>Penu Kiratzov<br /><br />Data:</strong> <a href="https://www.openstreetmap.org" target="_blank">OpenStreetMap</a>, <a href="https://www.mapbox.com" target="_blank">Mapbox</a></li><li><a href="https://www.csd.bg" target="_blank"><img src="images/logo_csd.png" width="300" height="75" /></a><br /><br />&copy; Center for The Study of Democracy, 2021<br /><br /><a href="https://csd.bg/footer-menu/privacy/" target="_blank">Privacy Policy</a></li></ul>',
     chapters: [
         {
             id: '01',
