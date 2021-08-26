@@ -49,6 +49,9 @@ Highcharts.chart("container", {
           symbolStrokeWidth: 2
       }
   },
+  credits: {
+        enabled: false
+    },
   plotOptions: {
     pie: {
       states: {

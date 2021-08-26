@@ -6,6 +6,9 @@ Highcharts.chart('container', {
         backgroundColor: '#389599'
     },
     colors: ['#283B53', '#669DA1'],
+    credits: {
+        enabled: false
+    },
     title: {
         text: '<strong>Project Status</strong>',
         style: {
