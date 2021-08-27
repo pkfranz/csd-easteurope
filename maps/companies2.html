@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a popup on click</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q';
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/franzindustries/ckryx7rcr612w18rzu7g1whec',
+center: [20.496689, 44.448765],
+zoom: 5.36
+});
+
+map.scrollZoom.disable();
+
+map.addControl(new mapboxgl.NavigationControl());
+
+map.on('load', () => {
+map.addSource('places', {
+// This GeoJSON contains features that include an "icon"
+// property. The value of the "icon" property corresponds
+// to an image in the Mapbox Streets style's sprite.
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+	// 1
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>BERALB</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>Operating Revenue</strong>: N/A',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.01667, 42.06222]
+}
+},
+// 2
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>VICTORIA INVEST</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.078053, 41.110507]
+}
+},
+// 3
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ALBANIAN SINOMINE RESOURCE CO.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.815228, 41.319646]
+}
+},
+// 4
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Z.U. CRVENA APOTEKA</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 8 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.815228, 41.319646]
+}
+},
+// 5
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SIMIL D.O.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 3 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [16.82384763, 45.18146016]
+}
+},
+// 6
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>TEHNO INDE D.O.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 1 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.17467503, 44.8429223]
+}
+},
+// 7
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES BULGARIA LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 105 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.38310843, 42.66072602]
+}
+},
+// 8
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HELIOS PROJECTS JSC</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 15 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.33078983, 42.6937077]
+}
+},
+// 9
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>BCI CHERGANOVO LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 10 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.33078983, 42.6937077]
+}
+},
+// 10
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>BCI CHERGANOVO LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 10 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.3862131, 42.62160778]
+}
+},
+// 11
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>INGRAM MICRO SSC EMEA LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 10 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.38227158, 42.66079702]
+}
+},
+// 12
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HERA AGRO LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 6 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [24.81635066, 42.09599553]
+}
+},
+// 13
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SUISPORT BULGARIA AD</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 6 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.40520368, 42.68510306]
+}
+},
+// 14
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>TOM TAILOR SOFIA LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 5 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.38305604, 42.66033919]
+}
+},
+// 15
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>AMK DRIVES AND CONTROLS LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 3 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.31824001, 42.88810174]
+}
+},
+// 16
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>AMK DRIVES AND CONTROLS LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 3 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.31824001, 42.88810174]
+}
+},
+// 17
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>BESTSOLAR LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 2 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.33154085, 42.6938713]
+}
+},
+// 18
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>LINDE POHONY, S.R.O.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 240 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.33372191, 48.83206012]
+}
+},
+// 19
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES (CZECH), S.R.O.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 207 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.458309, 50.04443402]
+}
+},
+// 20
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>PEGATRON CZECH, S.R.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 152 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.2658834, 49.77135817]
+}
+},
+// 21
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>LINDE MATERIAL HANDLING CZECH REPUBLIC, S.R.O.</strong><p><strong>Subsidiaries</strong>: 2</p><p><strong>2016 Operating Revenue</strong>: 70 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.51990014, 50.07866181]
+}
+},
+// 22
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>STILL CZECH REPUBLIC, S.R.O.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 65 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.53540852, 50.06329208]
+}
+},
+// 23
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>KSM CASTINGS CZ, A.S.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 64 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.84757115, 50.86373064]
+}
+},
+// 24
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>MINERVA BOSKOVICE, A.S.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 46 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [16.65405979, 49.49234535]
+}
+},
+// 25
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>URBAN TRANSPORTE, S.R.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 13 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [16.59392484, 49.14512079]
+}
+},
+// 26
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SK SLAVIA PRAHA - FOTBAL, A.S.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 6 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.47071809, 50.06785127]
+}
+},
+// 27
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>MESIT FOUNDRY, A.S.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 6 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.47998042, 49.0745935]
+}
+},
+// 28
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>PIRAEUS CONTAINERS TERMINAL S.A.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 161 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.63837489, 37.93693059]
+}
+},
+// 29
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>PIRAEUS PORT AUTHORITY S.A.</strong><p><strong>Subsidiaries</strong>: 4</p><p><strong>2016 Operating Revenue</strong>: 109 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.63621459, 37.93829155]
+}
+},
+// 30
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES (GREECE) S.A.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.79724315, 38.03662319]
+}
+},
+// 31
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SYNGENTA HELLAS S.A.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.62264863, 38.3101655]
+}
+},
+// 32
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ZTE HELLAS S.A.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.8041906, 38.0407317]
+}
+},
+// 33
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ELASTIKA PIRELLI C.S.A.</strong><p><strong>Subsidiaries</strong>: 4</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.74387414, 37.91394107]
+}
+},
+// 34
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>CLUB MEDITERRANEE HELLAS S.E.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.73733287, 37.97900334]
+}
+},
+// 35
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SWISSPORT HELLAS S.E.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: N/A</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.93481152, 37.92022171]
+}
+},
+// 36
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES (HUNGARY ) D.O.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 37 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.97014145, 45.79848887]
+}
+},
+// 37
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SUN GARDENS DUBROVNIK D.O.O.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 24 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.01863258, 42.69462434]
+}
+},
+// 38
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SYNGENTA AGRO D.O.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 22 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.86173909, 45.81218636]
+}
+},
+// 38
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>TOM TAILOR ZAGREB D.O.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 17 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.95022206, 45.76986534]
+}
+},
+// 39
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>LEDVANCE D.O.O.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 6 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.93509163, 45.80050343]
+}
+},
+// 40
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES HUNGARY LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 171 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.05962791, 47.53511408]
+}
+},
+// 41
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>INGRAM MICRO MAGYARORSZAG LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 117 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.07899911, 47.55458563]
+}
+},
+// 42
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>COFCO INTERNATIONAL HUNGARY LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 50 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.02086438, 47.49056846]
+}
+},
+// 42
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ADAMA HUNGARY ZRT.</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 32 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.07845615, 47.55347024]
+}
+},
+// 43
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>LINDE MATERIAL HANDLING HUNGARY LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 28 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.12104101, 47.35404512]
+}
+},
+// 44
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>KACO HUNGARY LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 19 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.42640003, 47.64509725]
+}
+},
+// 45
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>INESA EUROPA LTD. (HUNGARY)</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 11 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.11815519, 47.61675316]
+}
+},
+// 46
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>PIRELLI HUNGARY LTD.</strong><p><strong>Subsidiaries</strong>: 2</p><p><strong>2016 Operating Revenue</strong>: 9 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.04944951, 47.46098165]
+}
+},
+// 47
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>TOM TAILOR RETAIL LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 4 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.04129044, 47.47417747]
+}
+},
+// 48
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>NH HUNGARY HOTEL OPERATOR LTD.</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 3 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.05150063, 47.51287964]
+}
+},
+// 49
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>DZEK POT</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 2 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.24671892, 42.44221835]
+}
+},
+// 50
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>VATROOPREMA</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 1 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.26199369, 42.42852884]
+}
+},
+// 51
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SINOHIDRO KORPOREJSHN LIMITED PEKING PODRUZHNICA SKOPJE</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 1 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.39041942, 41.99409205]
+}
+},
+// 52
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>MAKSTIL SKOPJE AD</strong><p><strong>Subsidiaries</strong>: 2</p><p><strong>2016 Operating Revenue</strong>: 60 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.4634442, 42.01596784]
+}
+},
+// 52
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>BALKAN METAL SKOPJE SKOPJE DOOEL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 8 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.47154061, 42.00702923]
+}
+},
+// 53
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ZTE MAKEDONIJA SKOPJE DOOEL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 5 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.559263, 41.478472]
+}
+},
+// 54
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ATB SEVER MAK SKOPJE DOOEL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 1 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.4157545, 41.99251093]
+}
+},
+// 55
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>PIRELLI TYRES ROMANIA SRL</strong><p><strong>Subsidiaries</strong>: 2</p><p><strong>2016 Operating Revenue</strong>: 417 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [24.40175962, 44.41610468]
+}
+},
+// 56
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES SRL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 276 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [26.10262576, 44.47918487]
+}
+},
+// 57
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>PREH ROMANIA SRL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 150 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.51472121, 45.68400233]
+}
+},
+// 58
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SYNGENTA AGRO SRL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 95 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [26.07987996, 44.50498447]
+}
+},
+// 59
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>QUIN ROMANIA SRL (now JOYSONQUIN AUTOMOTIVE SYSTEMS ROMANIA SRL)</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 83 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.53465137, 45.65116207]
+}
+},
+// 60
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>EUROSPORT DHS SA</strong><p><strong>Subsidiaries</strong>: 2</p><p><strong>2016 Operating Revenue</strong>: 59 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [22.96131222, 45.85503856]
+}
+},
+// 61
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ADAMA AGRICULTURAL SOLUTIONS SRL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 41 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [26.12687674, 44.48936094]
+}
+},
+// 62
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>RRC TECH DISTRIBUTION SRL (now INGRAM MICRO DISTRIBUTION SRL)</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 27 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [26.06171868, 44.46383709]
+}
+},
+// 63
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>COSCO SHIPPING LINES (ROMANIA) CO. LTD. SRL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 27 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [26.11067733, 44.41969741]
+}
+},
+// 64
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>MAGONTEC SRL</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 24 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.46968842, 46.32447178]
+}
+},
+// 65
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HBIS GROUP SERBIA IRON & STEEL</strong><p><strong>Subsidiaries</strong>: 2</p><p><strong>2016 Operating Revenue</strong>: 286 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.43700936, 44.81636837]
+}
+},
+// 66
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ŽELEZARA SMEDEREVO D.O.O.</strong><p><strong>Subsidiaries</strong>: 5</p><p><strong>2016 Operating Revenue</strong>: 164 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.97145751, 44.60469157]
+}
+},
+// 67
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>INGRAM MICRO D.O.O. BEOGRAD</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 46 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.38937789, 44.81382988]
+}
+},
+// 67
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HIP-AZOTARA DOO PANCEVO</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 32 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.6742108, 44.83697769]
+}
+},
+// 67
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SYNGENTA AGRO DOO BEOGRAD</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 27 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.39689713, 44.81283297]
+}
+},
+// 68
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>ATB SEVER DOO</strong><p><strong>Subsidiaries</strong>: 11</p><p><strong>2016 Operating Revenue</strong>: 14 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.69883253, 46.09763317]
+}
+},
+// 69
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HUAWEI TECHNOLOGIES DOO BEOGRAD</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 10 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.39872262, 44.81131392]
+}
+},
+// 70
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>BMP A.D. NOVI BEOGRAD</strong><p><strong>Subsidiaries</strong>: 1</p><p><strong>2016 Operating Revenue</strong>: 10 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.43549036, 44.81242509]
+}
+},
+// 71
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>TOM TAILOR DOO BEOGRAD</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 8 (mn €)</p>',
+'icon': 'circle-white-2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.39227507, 44.81235945]
+}
+},
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>SAFRAN D.O.O. BEOGRAD</strong><p><strong>Subsidiaries</strong>: 0</p><p><strong>2016 Operating Revenue</strong>: 6 (mn €)</p>',
+'icon': 'music-15'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.36265973, 44.83536664]
+}
+}
+]
+}
+});
+// Add a layer showing the places.
+map.addLayer({
+'id': 'places',
+'type': 'symbol',
+'source': 'places',
+'layout': {
+'icon-image': '{icon}',
+'icon-allow-overlap': true
+}
+});
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// location of the feature, with description HTML from its properties.
+map.on('click', 'places', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const description = e.features[0].properties.description;
+
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'places', () => {
+map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'places', () => {
+map.getCanvas().style.cursor = '';
+});
+});
+</script>
+
+</body>
+</html>
