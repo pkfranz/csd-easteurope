@@ -21,11 +21,19 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 <div id="map"></div>
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q';
+
+	const bounds = [
+[3.18011, 31.94991], // Southwest coordinates
+[33.40575, 51.93248] // Northeast coordinates
+];
+
 const map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/franzindustries/ckryx7rcr612w18rzu7g1whec',
 center: [20.496689, 44.448765],
-zoom: 5.36
+zoom: 5.36,
+maxBounds: bounds,
+scrollZoom: false
 });
 
 map.scrollZoom.disable();
