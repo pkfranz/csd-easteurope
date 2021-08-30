@@ -87,12 +87,8 @@ var config = {
                      layer: 'satellite',
                      opacity: 1,
                      duration: 2000
-                 },
-                 {
-                   layer: 'polyfill',
-                   opacity: 0,
-                   duration: 3000
                  }
+
             ],
             onChapterExit: [
 
@@ -115,11 +111,7 @@ var config = {
             rotateAnimation: false,
             callback: '',
             onChapterEnter: [
-              {
-                layer: 'polyfill',
-                opacity: 0.8,
-                duration: 3000
-              }
+
             ],
             onChapterExit: [
               {
@@ -175,11 +167,6 @@ var config = {
                   duration: 2000
               },
               {
-                layer: 'polyfill',
-                opacity: 0.8,
-                duration: 3000
-              },
-              {
                   layer: 'serbia',
                   opacity: 1,
                   duration: 2000
@@ -212,11 +199,6 @@ var config = {
                   duration: 2000
               },
               {
-                layer: 'polyfill',
-                opacity: 0.8,
-                duration: 3000
-              },
-              {
                   layer: 'serbia',
                   opacity: 1,
                   duration: 2000
@@ -227,11 +209,6 @@ var config = {
                   layer: 'state_data',
                   opacity: 0,
                   duration: 2000
-              },
-              {
-                layer: 'polyfill',
-                opacity: 0,
-                duration: 3000
               },
               {
                   layer: 'serbia',
@@ -453,11 +430,6 @@ var config = {
                   duration: 3000
               },
               {
-                layer: 'polyfill',
-                opacity: 0.8,
-                duration: 3000
-              },
-              {
                   layer: 'state_data',
                   opacity: 1,
                   duration: 2000
@@ -478,11 +450,6 @@ var config = {
                   layer: 'cce_greece',
                   opacity: 0,
                   duration: 3000
-              },
-              {
-                layer: 'polyfill',
-                opacity: 0,
-                duration: 3000
               },
               {
                   layer: 'cce_states',
