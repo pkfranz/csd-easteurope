@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSD | China's corporate footprint</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbnppbmR1c3RyaWVzIiwiYSI6ImNrZXN6bDI0ZDE5ejMycm1yMzQ4YTcxcmkifQ.aL6yg8sRwBFNq_7Trmtw9Q';
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/franzindustries/ckryx7rcr612w18rzu7g1whec',
+center: [20.496689, 44.448765],
+zoom: 5.36
+});
+
+map.scrollZoom.disable();
+
+map.addControl(new mapboxgl.NavigationControl());
+
+map.on('load', () => {
+map.addSource('places', {
+// This GeoJSON contains features that include an "icon"
+// property. The value of the "icon" property corresponds
+// to an image in the Mapbox Streets style's sprite.
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+	// 1
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Stanari TPP 300MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 550</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.7927661, 44.75357545]
+}
+},
+// 2
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kozjak HE 80MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2004)</p><p><strong>Est. Value (mn Euro)</strong>: € 170</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.19182797, 41.88057723]
+}
+},
+// 3
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kotor and 21 May ships</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2012)</p><p><strong>Est. Value (mn Euro)</strong>: € 41</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.815228, 41.319646]
+}
+},
+// 4
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Zemun-Borca Bridge</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2014)</p><p><strong>Est. Value (mn Euro)</strong>: € 224</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.38368403, 44.86755869]
+}
+},
+// 5
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kostolac Phase I (de-SO2)</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 302</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.173012, 44.72424795]
+}
+},
+// 6
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Bankers Petroleum (Patos-Marinza, Kucova oilfield, Block F)</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 509</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.65118425, 40.7374751]
+}
+},
+// 7
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>The Mozura Wind Park</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 90</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.20833338, 41.97529466]
+}
+},
+// 8
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Piraeus port</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 350</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.63359086, 37.94106206]
+}
+},
+// 9
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Nesko Metals Copper Mine (50%stake)</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2014)</p><p><strong>Est. Value (mn Euro)</strong>: € 58</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.92900371, 42.01674109]
+}
+},
+// 10
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Renewal of Ship Fleet</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2014)</p><p><strong>Est. Value (mn Euro)</strong>: € 100</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.23894429, 42.42980226]
+}
+},
+// 11
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Refurbishment of Deva-Mintia TPP</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed</p><p><strong>Est. Value (mn Euro)</strong>: € 237</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [22.82790005, 45.91546515]
+}
+},
+// 12
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Zelezara Smederevo steel mill</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 46</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.97063612, 44.60518063]
+}
+},
+// 13
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Tirana International Airport Operator TIA</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 90</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.71555926, 41.41770035]
+}
+},
+// 14
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Tirana International Airport Operator TIA</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2016)</p><p><strong>Est. Value (mn Euro)</strong>: € 90</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.71555926, 41.41770035]
+}
+},
+// 15
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kolasin-Kos Railway Rehabilitation</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2017)</p><p><strong>Est. Value (mn Euro)</strong>: € 7</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.49849209, 42.7447667]
+}
+},
+// 16
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>RTB Bor Mining company (63% stake)</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Completed (2018)</p><p><strong>Est. Value (mn Euro)</strong>: € 350</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [22.10835295, 44.07631059]
+}
+},
+// 17
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Investment in Gaženica port in Zadar</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2017)</p><p><strong>Est. Value (mn Euro)</strong>: € 28</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.25855365, 44.09322665]
+}
+},
+// 18
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Bluetech 45 project (vessels and bulk carriers)</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Completed (2018)</p><p><strong>Est. Value (mn Euro)</strong>: € 84</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [27.91874902, 43.20020588]
+}
+},
+// 19
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Peljesac Bridge</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 526</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.52675204, 42.92332021]
+}
+},
+// 20
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Senj Windfarm 156 MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 180</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.90378999, 44.98912066]
+}
+},
+// 21
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Florina II TPP 440MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 750</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.41998025, 40.7743569]
+}
+},
+// 22
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Bar-Boljare Highway: Sec 3</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 810</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.6020662, 42.97182517]
+}
+},
+// 23
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Ohrid-Kicevo Highway</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 580</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.787966, 41.31615722]
+}
+},
+// 24
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kostolac II TPP 350 MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 629</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.17076482, 44.72392553]
+}
+},
+// 25
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>E736 Highway: Surcin Preljina</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 1,085</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.31431734, 44.81866028]
+}
+},
+// 26
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Belgrade Bypass B</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 207</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.43089695, 44.86827559]
+}
+},
+// 27
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Belgrade-Budapest Rail (RS)</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 1,766</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.45090769, 44.79409025]
+}
+},
+// 28
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Chaplina section of Pan-European 5C Corridor</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 100</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.25208796, 45.14496707]
+}
+},
+// 29
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Dabar HE 160MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 190</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.63621459, 37.93829155]
+}
+},
+// 30
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Ulog HPP 35MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 67</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.31146195, 43.39607308]
+}
+},
+// 31
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Loznica Natural Gas Power Plant</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 230</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.22321897, 44.53389208]
+}
+},
+// 32
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Industrial Park in Belgrade (Borca)</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 300</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.46607291, 44.87717528]
+}
+},
+// 33
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>TE-TO Pančevo</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 180</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.68034082, 44.831041]
+}
+},
+// 34
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Copper Refining Plant</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Under Construction</p><p><strong>Est. Value (mn Euro)</strong>: € 65</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [22.10826704, 44.07577173]
+}
+},
+// 35
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>E763 Preljina-Pozega</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 450</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.42658465, 43.91977028]
+}
+},
+// 36
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Banja Luka - Prijedor Highway</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 277</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [16.71695983, 44.9819831]
+}
+},
+// 37
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Gacko 2 TPP 300 MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 600</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.5368226, 43.16802666]
+}
+},
+// 38
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Tuzla 7 TPP 450MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 722</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.6052214, 44.52225784]
+}
+},
+// 38
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Tuzla 7 TPP 450MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 722</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.95022206, 45.76986534]
+}
+},
+// 39
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Banovici TPP 350MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 305</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.44634391, 44.40450191]
+}
+},
+// 40
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Varna port</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 120</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [27.91465164, 43.19721835]
+}
+},
+// 41
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Reconstruction of TPP Pljevlja</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 54</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.35310414, 43.35781932]
+}
+},
+// 42
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kolubara B Power Station (coal)</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 385</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.23381264, 44.50509854]
+}
+},
+// 42
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Obrenovac-New Belgrade heating pipeline</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 190</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.19481217, 44.65752303]
+}
+},
+// 43
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>MINOS 50MW CSP Project</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 42</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.53804837, 35.05944773]
+}
+},
+// 44
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Banja Luka - Split highway I</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 600</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.1859003, 44.77173232]
+}
+},
+// 45
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kamengrad TPP 2x215MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 521</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [16.56987492, 44.79117397]
+}
+},
+// 46
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Bar-Boljare Highway</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 2,100</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.9896042, 43.07714078]
+}
+},
+// 47
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Rovinari TPP 600MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 847</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.1329153, 44.90930806]
+}
+},
+// 48
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Belgrade Port and Free Zone</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 343</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.47659265, 44.82440618]
+}
+},
+// 49
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Belgrade bypass C</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 500</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.47372729, 44.72694574]
+}
+},
+// 50
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>E763 Pozega-Boljare</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 1,320</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.03331223, 43.84238411]
+}
+},
+// 51
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Waste water management</strong><p><strong>Sector</strong>: Waste Management</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 250</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.77737544, 44.2675386]
+}
+},
+// 52
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Adriatic-Ionian Highway (Blue Corridor)</strong><p><strong>Sector</strong>: Waste Management</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: N/A</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.06721993, 44.96649913]
+}
+},
+// 52
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Wind Farm Near Tomislavgrad</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 150</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [17.2262626, 43.71801159]
+}
+},
+// 53
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HPPs on Moraca and Komarnica rivers</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 530</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.26075838, 42.46191302]
+}
+},
+// 54
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Vukosavlje-Doboj Highway project</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 350</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.0790216, 44.73396054]
+}
+},
+// 55
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Modernisation of Rijeka – Zagreb railway</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 11</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [14.3914527, 45.35216782]
+}
+},
+// 56
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Mediterranean Intermodal Transport Corridor</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: N/A</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [15.9471578, 45.80158901]
+}
+},
+// 57
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Belgrade Metro Network</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 4,500</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.47540678, 44.7925884]
+}
+},
+// 58
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Plant for electric buses</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 25</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.31157724, 42.70543927]
+}
+},
+// 59
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Kovin Energy Complex</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,150</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.97700417, 44.73932038]
+}
+},
+// 60
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Buk-Bijela HPP 94MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,150</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.76480751, 43.42754945]
+}
+},
+// 61
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Mrsovo HPP 37MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 96</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.328324, 43.652813]
+}
+},
+// 62
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Ugljevik 3 TPP 2x300MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 800</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.97130079, 44.6842857]
+}
+},
+// 63
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Belene TPP</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 10,500</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.1950299, 43.63280325]
+}
+},
+// 64
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Budapest Rail Bypass</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,200</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.0382834, 47.49643983]
+}
+},
+// 65
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Vardar Valley HPP 300MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,500</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.7669696, 41.73725986]
+}
+},
+// 66
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Vardar Valley HPP 300MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,500</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [21.7669696, 41.73725986]
+}
+},
+// 67
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Moraca HPP 238MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 543</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.35530178, 42.57286453]
+}
+},
+// 67
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Tirana-Dibra Arber Motorway</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 190</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.97808635, 41.44558114]
+}
+},
+// 67
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Europort Shengjin</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,200</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [19.59138639, 41.81403005]
+}
+},
+// 68
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>HPPs Buk Bijela, Foča, and Paunci</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: N/A</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.79089104, 43.55100277]
+}
+},
+// 69
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Tarnita-Lapustesti hydropower plant</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,100</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [23.26862174, 46.71408022]
+}
+},
+// 70
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Takeover of KMGI (Petromida oil refinery)</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 598</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [28.64663169, 44.34393935]
+}
+},
+// 71
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Stavalj TPP</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 700</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [20.12403419, 43.27384976]
+}
+},
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Airport in Trebinje</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: N/A</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [18.34707708, 42.70973163]
+}
+},
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Cernavoda 3&4 NPP 2x720MW</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 7,200</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [28.05776234, 44.31756921]
+}
+},
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Comarnic-Brasov highway</strong><p><strong>Sector</strong>: Infrastructure and Maritime Transport</p><p><strong>Status</strong>: Delayed/Cancelled</p><p><strong>Est. Value (mn Euro)</strong>: € 1,200</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [25.62697505, 45.24495856]
+}
+},
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Vidraru HPP reconstruction</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 82</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [24.63063293, 45.36659242]
+}
+},
+{
+'type': 'Feature',
+'properties': {
+'description':
+'<strong>Dukovany Nuclear Power Plant</strong><p><strong>Sector</strong>: Energy</p><p><strong>Status</strong>: Planning and Permit Stage</p><p><strong>Est. Value (mn Euro)</strong>: € 5,270</p>',
+'icon': 'red-dot2'
+},
+'geometry': {
+'type': 'Point',
+'coordinates': [16.14992084, 49.08520923]
+}
+}
+]
+}
+});
+// Add a layer showing the places.
+map.addLayer({
+'id': 'places',
+'type': 'symbol',
+'source': 'places',
+'layout': {
+'icon-image': '{icon}',
+'icon-allow-overlap': true
+}
+});
+
+// When a click event occurs on a feature in the places layer, open a popup at the
+// location of the feature, with description HTML from its properties.
+map.on('click', 'places', (e) => {
+// Copy coordinates array.
+const coordinates = e.features[0].geometry.coordinates.slice();
+const description = e.features[0].properties.description;
+
+// Ensure that if the map is zoomed out such that multiple
+// copies of the feature are visible, the popup appears
+// over the copy being pointed to.
+while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+}
+
+new mapboxgl.Popup()
+.setLngLat(coordinates)
+.setHTML(description)
+.addTo(map);
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'places', () => {
+map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'places', () => {
+map.getCanvas().style.cursor = '';
+});
+});
+</script>
+
+</body>
+</html>
